@@ -1,7 +1,7 @@
 function InventoryListItem(inventory){
     return(
     <>
-    <h1> I am {inventory.name}</h1>
+    <p>hi I am {inventory.name}, {inventory.servings} left, before {inventory.best_before}</p>
     </>
     )
 }
