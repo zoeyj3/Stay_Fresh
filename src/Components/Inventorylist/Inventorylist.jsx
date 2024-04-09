@@ -1,25 +1,26 @@
 import InventoryListItem from "../InventoryListItem/InventoryListItem";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function Inventorylist() {
-  const navigate = useNavigate();
+  const { place } = useParams();
+ 
   const [fullList, setFullList] = useState([]);
-  const [filteredList, setFilteredList] = useState([]);
 
+  console.log(place)
   useEffect(() => {
-    const fetchFoodList = async () => {
+    const fetchInventoryList = async () => {
       const response = await axios.get("http://localhost:8080/inventory");
       console.log(response.data);
       setFullList(response.data);
     };
-    fetchFoodList();
+    fetchInventoryList();
   }, []);
 
 
   const filterList = fullList.filter(
-    (food) => food.storing_place === "Freezer"
+    (food) => food.storing_place === place
   );
   console.log(filterList)
 
@@ -30,7 +31,7 @@ function Inventorylist() {
     <>
     {filterList && (
         <div>
-      <h1> I am Inventorylist</h1>
+      <h1>{place}</h1>
       <ul>
         {filterList.map((inventory) => {
           return (

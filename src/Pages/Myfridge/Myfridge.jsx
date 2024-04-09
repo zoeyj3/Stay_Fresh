@@ -1,11 +1,12 @@
 import Inventorylist from "../../Components/Inventorylist/Inventorylist"
-
-function Myfridge(){
+import AddInventory from "../../Components/AddInventory/AddInventory"
+import "./Myfridge.scss";
+function Myfridge(place){
     return(
-        <>
-        <h1>Hi i am my fridge page</h1>
-        <Inventorylist/>
-        </>
+        <div className="page">
+        <AddInventory/>
+        <Inventorylist place={place}/>
+        </div>
     )
 }
 export default Myfridge
