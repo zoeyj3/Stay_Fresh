@@ -3,7 +3,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function InventoryListItem({ inventory,CheckboxChange }) {
     const handleCheckbox = (event) => {
-        CheckboxChange(inventory.id, event.target.checked);
+        CheckboxChange(inventory.name, event.target.checked);
       };
   return (
     <div className="listitem">
