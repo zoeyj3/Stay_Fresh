@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function Header({handleSearch,setSearchingItem}) {
+function Header({setSearchingItem}) {
   
   // function handleSearch(event) {
   //     event.preventDefault();

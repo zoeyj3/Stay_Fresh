@@ -1,11 +1,20 @@
 import InventoryListItem from "../InventoryListItem/InventoryListItem"
 function SearchInventory({searchedItemData}){
-    console.log(searchedItemData.name)
+    console.log(searchedItemData)
 
     return(
     <>
-    <p>SearchInventory:{searchedItemData.name}</p>
-    <InventoryListItem inventory={searchedItemData}/>
+    <ul>
+    {searchedItemData.map((inventory) => {
+          return (
+            <InventoryListItem
+            inventory={inventory}
+            />
+          );
+        })
+        }
+    </ul>
+
     </>
     )
 }

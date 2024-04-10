@@ -1,7 +1,7 @@
-import './Sidebar.scss'
+import './Menu.scss'
 import { Link } from 'react-router-dom'
 
-function Sidebar(){
+function Menu(){
     return(
     <div className='sidebar'>
     <h1>I am sidebar</h1>
@@ -14,4 +14,4 @@ function Sidebar(){
     </div>
     )
 }
-export default Sidebar
+export default Menu
