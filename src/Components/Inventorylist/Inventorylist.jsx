@@ -33,7 +33,7 @@ function Inventorylist() {
     {filterList && (
         <div>
       <h1>{place}</h1>
-      <AddInventory/>
+      
       <ul>
         {filterList.map((inventory) => {
           return (

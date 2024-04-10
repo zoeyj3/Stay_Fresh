@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 function Menu(){
     return(
-    <div className='sidebar'>
-    <h1>I am sidebar</h1>
+    <div className='menu'>
+
     {["fridge","freezer","pantry"].map((place) => (
         <Link
         place={place}
