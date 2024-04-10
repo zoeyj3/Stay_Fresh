@@ -10,11 +10,11 @@ import { useEffect, useState } from "react";
 function HomePage() {
   const [searchingItem, setSearchingItem] = useState(null);
   const [searchedItemData, setSearchedItemData] = useState("");
-    console.log(searchingItem)
 
   const handleSearch = async () => {
 
     try {
+      console.log(searchingItem)
       const response = await axios.get(
         `http://localhost:8080/inventory-name/${searchingItem}`
       );
@@ -36,7 +36,7 @@ function HomePage() {
   return (
     <div className="page">
       <Header handleSearch={handleSearch} setSearchingItem={setSearchingItem}/>
-      {searchingItem && <SearchInventory searchedItemData={searchedItemData}/>}
+      {searchingItem && searchedItemData && <SearchInventory searchedItemData={searchedItemData}/>}
       <Inventorylist />
       {/* {(place === "freezer" || place === "fridge" || place === "pantry") && <Inventorylist place={place} />} */}
     </div>
