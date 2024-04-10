@@ -1,3 +1,4 @@
+import './Inventorylist.scss'
 import InventoryListItem from "../InventoryListItem/InventoryListItem";
 import AddInventory from "../../Components/AddInventory/AddInventory"
 import axios from "axios";
@@ -8,6 +9,7 @@ function Inventorylist() {
   const { place } = useParams();
  
   const [fullList, setFullList] = useState([]);
+  const [itemchoosed,setitemchoosed] = useState([]);
   
   useEffect(() => {
     const fetchInventoryList = async () => {
@@ -24,21 +26,31 @@ function Inventorylist() {
   );
   console.log(filterList)
 
+
+  function handleSubmit(event){
+
+  }
+
+
   return (
     <>
     {filterList && (
-        <div>
-      
+        <div className='inventorylist'>
+      <form className='inventorylist__checkbox-form' onSubmit={handleSubmit}>
+        <button type="Submit">Search Recipe</button>
       <ul>
         {filterList.map((inventory) => {
           return (
             <InventoryListItem
+            key={inventory.id}
             inventory={inventory}
             />
           );
         })
         }
       </ul>
+      
+      </form>
       </div>
       )}
     </>

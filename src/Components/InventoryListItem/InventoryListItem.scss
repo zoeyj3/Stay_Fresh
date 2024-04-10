@@ -1,0 +1,25 @@
+.listitem{
+    width: 100%;
+    height: 3.25rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px 1px #e6e6e6;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &__contentwrapper{
+        padding: 0 1rem 0 1rem;
+    }
+    &__checkbox{
+        color:#2664CF;
+    }
+    &__trashicon{
+
+        margin-left: auto;
+        color:#ba6969;
+    }
+}
+
