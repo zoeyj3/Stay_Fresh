@@ -3,12 +3,12 @@ import AddInventory from "../AddInventory/AddInventory"
 import Inventorylist from "../Inventorylist/Inventorylist"
 
 function Inventory(render){
-    const [inventoryList,setInventoryList] =useState([])
+    const [newInventory,setNewInventory] =useState([])
 
     return(
     <>  
-        <AddInventory render={render} setInventoryList={setInventoryList} />
-        <Inventorylist render={render} inventoryList={inventoryList}/>
+        <AddInventory render={render} setNewInventory={setNewInventory} />
+        <Inventorylist render={render} newInventory={newInventory}/>
     </>
     )
 }

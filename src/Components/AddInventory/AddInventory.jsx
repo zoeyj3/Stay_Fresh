@@ -1,11 +1,11 @@
 import Form from "../Form/Form"
 import { Link } from "react-router-dom"
-function AddInventory({setInventoryList}){
+function AddInventory({setNewInventory}){
     return(
     <>
     <Form
     keyword = "addinventory"
-    setInventoryList={setInventoryList}
+    setNewInventory={setNewInventory}
     />
     </>
     )
