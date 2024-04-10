@@ -9,7 +9,7 @@ function Inventorylist({newInventory}) {
   const { place } = useParams();
  
   const [fullList, setFullList] = useState([]);
-  const [itemchoosed,setitemchoosed] = useState([]);
+  const [itemChoosed,setItemChoosed] = useState({});
   
   useEffect(() => {
     const fetchInventoryList = async () => {
@@ -27,8 +27,18 @@ function Inventorylist({newInventory}) {
   console.log(filterList)
 
 
-  function handleSubmit(event){
+  const CheckboxChange = (itemName, itemStatus) => {
+    setItemChoosed((prev) => ({
+      ...prev,
+      [itemName]: itemStatus
+    }));
+  };
 
+
+  function handleSubmit(event){
+    event.preventDefault();
+    const selectedNames = Object.keys(itemChoosed).filter(key => itemChoosed[key]);
+    console.log(selectedNames);
   }
 
 
@@ -44,6 +54,7 @@ function Inventorylist({newInventory}) {
             <InventoryListItem
             key={inventory.id}
             inventory={inventory}
+            CheckboxChange={CheckboxChange}
             />
           );
         })
