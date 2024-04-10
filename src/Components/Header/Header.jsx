@@ -1,12 +1,12 @@
 import "./Header.scss";
-
+import headerlogo from '../../Assets/logo/logoinblue.png'
 
 function Header() {
 
   return (
     
     <div className="header">
-      <h1> I am header</h1>
+      <img className="header__logo"src={headerlogo}/>
     </div>
   );
 }

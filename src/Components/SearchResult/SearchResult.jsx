@@ -1,5 +1,7 @@
 import InventoryListItem from "../InventoryListItem/InventoryListItem"
-function SearchInventory({searchedItemData}){
+import "./SearchResult.scss"
+
+function SearchResult({searchedItemData}){
     console.log(searchedItemData)
 
     return(
@@ -18,4 +20,4 @@ function SearchInventory({searchedItemData}){
     </>
     )
 }
-export default SearchInventory
+export default SearchResult

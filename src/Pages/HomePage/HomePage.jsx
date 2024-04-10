@@ -1,13 +1,15 @@
 import Inventorylist from "../../Components/Inventorylist/Inventorylist";
 import AddInventory from "../../Components/AddInventory/AddInventory";
-import SearchInventory from "../../Components/SearchInventory/SearchInventory";
+import SearchResult from "../../Components/SearchResult/SearchResult";
 import Search from "../../Components/Search/Search";
 import "./HomePage.scss";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Inventory from "../../Components/Inventory/Inventory";
 
 function HomePage() {
+  const { place } = useParams();
   const [searchingItem, setSearchingItem] = useState(null);
   const [searchedItemData, setSearchedItemData] = useState("");
 
@@ -22,6 +24,7 @@ function HomePage() {
       setSearchedItemData(response.data);
     } catch (error) {
       console.error("nothing found", error);
+      setSearchedItemData([]);
     }
   };
 
@@ -35,10 +38,11 @@ function HomePage() {
 
   return (
     <div className="page">
+      <h1>{place}</h1>
       <Search  setSearchingItem={setSearchingItem}/>
-      <AddInventory/>
-      {searchingItem && searchedItemData && <SearchInventory searchedItemData={searchedItemData}/>}
-      <Inventorylist />
+      {searchingItem && searchedItemData && <SearchResult searchedItemData={searchedItemData}/>}
+      <Inventory />
+
       {/* {(place === "freezer" || place === "fridge" || place === "pantry") && <Inventorylist place={place} />} */}
     </div>
   );

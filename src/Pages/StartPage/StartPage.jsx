@@ -2,12 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import './Home.scss'
+import './StartPage.scss'
 
 
 const element = <FontAwesomeIcon icon="fa-kit fa-my-icon" />
 
-function Home(){
+function StartPage(){
     return(
         <>
       
@@ -18,4 +18,4 @@ function Home(){
         </>
     )
 }
-export default Home
+export default StartPage

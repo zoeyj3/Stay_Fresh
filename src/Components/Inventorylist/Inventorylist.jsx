@@ -8,8 +8,7 @@ function Inventorylist() {
   const { place } = useParams();
  
   const [fullList, setFullList] = useState([]);
-
-  console.log(place)
+  
   useEffect(() => {
     const fetchInventoryList = async () => {
       const response = await axios.get("http://localhost:8080/inventory");
@@ -25,14 +24,10 @@ function Inventorylist() {
   );
   console.log(filterList)
 
-
-
-
   return (
     <>
     {filterList && (
         <div>
-      <h1>{place}</h1>
       
       <ul>
         {filterList.map((inventory) => {
