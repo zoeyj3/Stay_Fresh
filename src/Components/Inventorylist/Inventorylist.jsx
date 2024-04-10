@@ -1,4 +1,5 @@
 import InventoryListItem from "../InventoryListItem/InventoryListItem";
+import AddInventory from "../../Components/AddInventory/AddInventory"
 import axios from "axios";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -12,7 +13,7 @@ function Inventorylist() {
   useEffect(() => {
     const fetchInventoryList = async () => {
       const response = await axios.get("http://localhost:8080/inventory");
-      console.log(response.data);
+      // console.log(response.data);
       setFullList(response.data);
     };
     fetchInventoryList();
@@ -32,17 +33,12 @@ function Inventorylist() {
     {filterList && (
         <div>
       <h1>{place}</h1>
+      <AddInventory/>
       <ul>
         {filterList.map((inventory) => {
           return (
             <InventoryListItem
-              key={inventory.id}
-              id={inventory.id}
-              name={inventory.name}
-              storing={inventory.storing_place}
-              create_time={inventory.create_time}
-              servings={inventory.servings}
-              best_before={inventory.best_before}
+            inventory={inventory}
             />
           );
         })

@@ -10,7 +10,7 @@ function Sidebar(){
         place={place}
         to={`myfridge/${place}`}
         >{place}</Link>
-    ))};
+    ))};//this should be in filter component 
     </div>
     )
 }
