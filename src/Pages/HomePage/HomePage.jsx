@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 function HomePage() {
   const [searchingItem, setSearchingItem] = useState(null);
   const [searchedItemData, setSearchedItemData] = useState("");
-    console.log(searchingItem)
 
   const handleSearch = async () => {
     console.log(searchingItem)
@@ -38,7 +37,7 @@ function HomePage() {
     <div className="page">
       <Search  setSearchingItem={setSearchingItem}/>
       <AddInventory/>
-      {/* {searchingItem && <SearchInventory searchedItemData={searchedItemData}/>} */}
+      {searchingItem && searchedItemData && <SearchInventory searchedItemData={searchedItemData}/>}
       <Inventorylist />
       {/* {(place === "freezer" || place === "fridge" || place === "pantry") && <Inventorylist place={place} />} */}
     </div>
