@@ -1,0 +1,48 @@
+.App{
+  display: flex;
+  flex-direction: column;
+  width:100vw;
+}
+.page{
+  margin-left: 12rem;
+}
+
+
+* {
+  font-family: helvatica, "Arial","sans-serif";
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+body {
+  
+
+  min-height: 100vh;
+
+  
+}
+
+h1{
+  /* // margin-left: 2rem;
+  // margin-right: 2rem; */
+  font-size: 28px;
+}
+
+a:link { 
+  text-decoration: none; 
+} 
+a:visited { 
+  text-decoration: none; 
+} 
+a:hover { 
+  text-decoration: none; 
+} 
+a:active { 
+  text-decoration: none; 
+}
+  /* to {
+    transform: rotate(360deg);
+  } */
+

@@ -1,23 +1,24 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home/Home";
-import Myfridge from "./Pages/Myfridge/Myfridge";
+import StartPage from "./Pages/StartPage/StartPage";
+import HomePage from "./Pages/HomePage/HomePage";
 import Recipe from "./Pages/Recipe/Recipe"
-import Sidebar from "./Components/Sidebar/Sidebar"
+import Menu from "./Components/Menu/Menu"
 import Header from "./Components/Header/Header"
 import Form from "./Components/Form/Form";
 import AddInventory from "./Components/AddInventory/AddInventory";
+import './App.scss'
 
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter >
-      <Sidebar/>
+      <Header/>
+      <Menu/>
       <Routes >
-          <Route path="/home" element={<Home />} />
-          <Route path="/myfridge" element={<Myfridge />} />
-          <Route path="/myfridge/:place" element={<Myfridge />} />
-          <Route path="/add" element={<Form />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/myfridge/:place" element={<HomePage />} />
+          <Route path="/myfridge" element={<HomePage />} />
           <Route path="/recipe/:recipeId" element={<Recipe />} />
       </Routes>
       </BrowserRouter>
