@@ -1,10 +1,13 @@
+
 import { useState } from "react";
+
 import axios from "axios";
 
 import "./Form.scss";
 
-function Form({ objectId, keyword, render }) {
+function Form({ objectId, keyword, render,setNewInventory }) {
   const [hidden, sethidden] = useState(true);
+
 
   function handleAddInventory(event) {
     event.preventDefault();
@@ -36,14 +39,19 @@ function Form({ objectId, keyword, render }) {
     };
     console.log(newItem);
 
+
+
     try {
       const response = axios.post("http://localhost:8080/add", newItem);
       const Answer = response.data;
       console.log(Answer);
-      render();
+      setNewInventory(newItem)
+      document.getElementById("form").reset();
+      
     } catch (error) {
       console.error("Error adding item", error);
     }
+    
   }
   function handleOnclick(event) {
     sethidden(false);
@@ -56,7 +64,7 @@ function Form({ objectId, keyword, render }) {
         type="text"
         name="name"
         id="name"
-        placeholder="Item Name"
+        placeholder="Add a Inventory"
         onClick={handleOnclick}
       ></input>
       {!hidden && (<div className="form__detail-container">
@@ -91,7 +99,7 @@ function Form({ objectId, keyword, render }) {
         </div>
         <div className="form__number-container">
           <label htmlFor="servings">servings</label>
-          <input type="number" name="servings" id="servings" min="1"></input>
+          <input type="number" name="servings" id="servings" min="1"/>
         </div>
         <div className="form__number-container"></div>
         <label htmlFor="preserve_time">preserve days</label>
@@ -100,7 +108,7 @@ function Form({ objectId, keyword, render }) {
           name="preserve_time"
           id="preserve_time"
           min="1"
-        ></input>
+        />
 
         <button type="submit">add item</button>
       </div>)}

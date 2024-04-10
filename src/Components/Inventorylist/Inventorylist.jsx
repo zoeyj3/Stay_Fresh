@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function Inventorylist() {
+function Inventorylist({newInventory}) {
   const { place } = useParams();
  
   const [fullList, setFullList] = useState([]);
@@ -18,7 +18,7 @@ function Inventorylist() {
       setFullList(response.data);
     };
     fetchInventoryList();
-  }, []);
+  }, [newInventory]);
 
 
   const filterList = fullList.filter(
