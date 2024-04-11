@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 function Inventorylist({newInventory}) {
   const { place } = useParams();
-  const [updatedInventory,setUpdatedInventory]= useState("");
+  const [updatedInventory,setUpdatedInventory]= useState({});
   const [fullList, setFullList] = useState([]);
   const [itemChoosed,setItemChoosed] = useState({});
   
