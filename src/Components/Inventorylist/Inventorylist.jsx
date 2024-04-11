@@ -14,8 +14,9 @@ function Inventorylist({newInventory}) {
   useEffect(() => {
     const fetchInventoryList = async () => {
       const response = await axios.get("http://localhost:8080/inventory");
-      // console.log(response.data);
-      setFullList(response.data);
+      //sort the data by best_before
+      const sortedData = response.data.sort((a, b) => new Date(a.best_before) - new Date(b.best_before))
+      setFullList(sortedData);
     };
     fetchInventoryList();
   }, [newInventory]);
