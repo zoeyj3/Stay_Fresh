@@ -1,5 +1,11 @@
-.page{
-    margin-left: 12rem;
+@use '../../styles/partials/index' as *;
+
+.homepage{
+
     padding: 2rem 1rem 2rem 1rem;
     background-color: #FAF9F8;
+
+    @include tablet{
+        margin-left: 12rem;
+    }
 }

@@ -37,7 +37,7 @@ function HomePage() {
   },[searchingItem])
 
   return (
-    <div className="page">
+    <div className="homepage">
       <h1>{place}</h1>
       <Search  setSearchingItem={setSearchingItem}/>
       {searchingItem && searchedItemData && <SearchResult searchedItemData={searchedItemData}/>}
