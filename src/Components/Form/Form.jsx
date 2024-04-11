@@ -4,6 +4,8 @@ import axios from "axios";
 
 import "./Form.scss";
 
+import * as CustomUtils from '../../CustomUtils.js'
+
 function Form({ objectId, keyword, setNewInventory }) {
   const [hidden, sethidden] = useState(true);
   const [storingCondition, setStoringCondition] = useState("");
@@ -34,32 +36,13 @@ function Form({ objectId, keyword, setNewInventory }) {
   function handleAddInventory(event) {
     event.preventDefault();
 
-    // date calculate
-    function getCurrentDate() {
-      const now = new Date();
-      const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, "0");
-      const day = String(now.getDate()).padStart(2, "0");
-      return `${year}-${month}-${day}`;
-    }
-    function getBestBeforeDate(preservingTime) {
-      const now = new Date();
-      const daysToAdd = parseInt(preservingTime, 10);
-      if (!isNaN(daysToAdd)) {
-        now.setDate(now.getDate() + daysToAdd);
-      }
-      const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, "0");
-      const day = String(now.getDate()).padStart(2, "0");
-      return `${year}-${month}-${day}`;
-    }
     const newItem = {
       name: event.target.name.value,
       storing_place: event.target.storing_place.value,
       servings: event.target.servings.value,
-      create_time: getCurrentDate(event),
+      create_time: CustomUtils.getCurrentDate(),
       preserve_time: event.target.preserve_time.value,
-      best_before: getBestBeforeDate(event.target.preserve_time.value),
+      best_before: CustomUtils.getBestBeforeDate(event.target.preserve_time.value),
     };
     console.log(newItem);
 
