@@ -1,24 +1,129 @@
 import { useState } from "react";
 import axios from "axios";
-import { Modal } from "@mui/material";
+import {  Modal } from "@mui/material";
 import "./EditInventory.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-function EditInventory({key,inventoryId,
-    inventoryName,
-    inventoryServings,
-    inventoryBestBefore}) {
+function EditInventory({
+  key,
+  inventoryId,
+  inventoryName,
+  inventoryServings,
+  inventoryBestBefore,
+  inventorysStoringPlace
+}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
     <>
-      <div className="edit__trigger" onClick={handleOpen}>
+      <div className="modal__trigger" onClick={handleOpen}>
         <FontAwesomeIcon icon={faPenToSquare} className="listitem__editicon" />
       </div>
-      <Modal className="modal" open={open} onClose={handleClose}
-      />
+      <Modal className="modal" open={open} onClose={handleClose}>
+        <div className="modal__card">
+          <a
+            class="modal__content-icon icon-link"
+            data-dismiss="modal"
+            onClick={handleClose}
+          >
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </a>
+          <div className="modal__content">
+          <form className="form" id="form" >
+      <input
+        className="form__add-container"
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Add a Inventory"
+        defaultValue={inventoryName}
+        required
+      ></input>
+      <div className="form__detail-container">
+          <div className="form__radios-container">
+            <div className="form__radio-container">
+              <input
+                className="form__radio"
+                value="fridge"
+                id="fridge"
+                name="storing_place"
+                type="radio"
+                defaultChecked={inventorysStoringPlace==="fridge"}
+                // onChange={handlePreserveTime}
+              />
+              <label htmlFor="fridge">fridge</label>
+            </div>
+            <div className="form__radio-container">
+              <input
+                className="form__radio"
+                value="freezer"
+                id="freezer"
+                name="storing_place"
+                type="radio"
+                defaultChecked={inventorysStoringPlace==="freezer"}
+                // onChange={handlePreserveTime}
+              />
+              <label htmlFor="freezer">freezer</label>
+            </div>
+            <div className="form__radio-container">
+              <input
+                className="form__radio"
+                value="pantry"
+                id="pantry"
+                name="storing_place"
+                type="radio"
+                defaultChecked={inventorysStoringPlace==="pantry"}
+                // onChange={handlePreserveTime}
+              />
+              <label htmlFor="pantry">pantry</label>
+            </div>
+          </div>
+          <div className="form__number-container">
+            <label className="form__number-label" htmlFor="servings">
+              servings
+            </label>
+            <input
+              type="number"
+              name="servings"
+              id="servings"
+              min="1"
+              className="form__number-input"
+              defaultValue={inventoryServings}
+              required
+              // onChange={handleNumberChange}
+            />
+          </div>
+          <div className="form__number-container">
+            <label className="form__number-label" htmlFor="preserve_time">
+              preserve days
+            </label>
+            <input
+              className="form__number-input"
+              type="number"
+              name="preserve_time"
+              id="preserve_time"
+              // defaultValue={timeCalculator}
+              required
+              min="1"
+            />
+          </div>
+
+          <button
+            // className={`form__number-button btn btn${isFormValid()? "":"-invalid"}`}
+            type="submit"
+            // disabled={!isFormValid()}
+          >
+            edit item
+          </button>
+      </div>
+      </form>
+
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }

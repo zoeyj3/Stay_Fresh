@@ -7,11 +7,15 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function InventoryListItem({ inventory, CheckboxChange }) {
+  if (!inventory) {
+    return <div>hello</div>;
+  }
   const handleCheckbox = (event) => {
     CheckboxChange(inventory.name, event.target.checked);
   };
   return (
-    <div className="listitem">
+    <>
+    {inventory && (<div className="listitem">
       <input
         type="checkbox"
         className="listitem__checkbox"
@@ -43,10 +47,12 @@ function InventoryListItem({ inventory, CheckboxChange }) {
           inventoryName={inventory.name}
           inventoryServings={inventory.servings}
           inventoryBestBefore={inventory.best_before}
+          inventorysStoringPlace={inventory.storing_place}
         />
         <FontAwesomeIcon icon={faTrashCan} className="listitem__trashicon" />
       </div>
-    </div>
+    </div>)}
+    </>
   );
 }
 export default InventoryListItem;
