@@ -46,7 +46,7 @@ function InventoryListItem({ inventory, CheckboxChange }) {
           inventoryId={inventory.id}
           inventoryName={inventory.name}
           inventoryServings={inventory.servings}
-          inventoryBestBefore={inventory.best_before}
+          inventoryBestBeforeDate={inventory.best_before}
           inventorysStoringPlace={inventory.storing_place}
         />
         <FontAwesomeIcon icon={faTrashCan} className="listitem__trashicon" />

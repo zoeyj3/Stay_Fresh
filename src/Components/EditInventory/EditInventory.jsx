@@ -1,6 +1,8 @@
+import * as CustomUtils from "../../CustomUtils.js";
+
 import { useState } from "react";
 import axios from "axios";
-import {  Modal } from "@mui/material";
+import { Modal } from "@mui/material";
 import "./EditInventory.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
@@ -11,12 +13,44 @@ function EditInventory({
   inventoryId,
   inventoryName,
   inventoryServings,
-  inventoryBestBefore,
-  inventorysStoringPlace
+  inventoryBestBeforeDate,
+  inventorysStoringPlace,
 }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  // create a updated itme
+  function handleSubmit(event) {
+    event.preventDefault();
+    const updatedItem = {
+      id:inventoryId,
+      name: event.target.name.value,
+      storing_place: event.target.storing_place.value,
+      servings: event.target.servings.value,
+      updated_time: CustomUtils.getCurrentDate(),
+      preserve_time: event.target.preserve_time.value,
+      best_before: CustomUtils.getBestBeforeDate(
+        event.target.preserve_time.value
+      ),
+    };
+    console.log(updatedItem);
+
+    const postUpdatedItem = async () =>{
+      try {
+        await axios.patch(
+          `http://localhost:8080/inventory/${inventoryId}`,
+          updatedItem
+        );
+        console.log("updated")
+        handleClose()
+      } catch (error){
+        console.error("Failed to edit", error);
+      }
+    }
+    postUpdatedItem(event)
+  }
+
   return (
     <>
       <div className="modal__trigger" onClick={handleOpen}>
@@ -32,95 +66,97 @@ function EditInventory({
             <FontAwesomeIcon icon={faArrowLeft} />
           </a>
           <div className="modal__content">
-          <form className="form" id="form" >
-      <input
-        className="form__add-container"
-        type="text"
-        name="name"
-        id="name"
-        placeholder="Add a Inventory"
-        defaultValue={inventoryName}
-        required
-      ></input>
-      <div className="form__detail-container">
-          <div className="form__radios-container">
-            <div className="form__radio-container">
+            <form className="form" id="form" onSubmit={handleSubmit}>
               <input
-                className="form__radio"
-                value="fridge"
-                id="fridge"
-                name="storing_place"
-                type="radio"
-                defaultChecked={inventorysStoringPlace==="fridge"}
-                // onChange={handlePreserveTime}
-              />
-              <label htmlFor="fridge">fridge</label>
-            </div>
-            <div className="form__radio-container">
-              <input
-                className="form__radio"
-                value="freezer"
-                id="freezer"
-                name="storing_place"
-                type="radio"
-                defaultChecked={inventorysStoringPlace==="freezer"}
-                // onChange={handlePreserveTime}
-              />
-              <label htmlFor="freezer">freezer</label>
-            </div>
-            <div className="form__radio-container">
-              <input
-                className="form__radio"
-                value="pantry"
-                id="pantry"
-                name="storing_place"
-                type="radio"
-                defaultChecked={inventorysStoringPlace==="pantry"}
-                // onChange={handlePreserveTime}
-              />
-              <label htmlFor="pantry">pantry</label>
-            </div>
-          </div>
-          <div className="form__number-container">
-            <label className="form__number-label" htmlFor="servings">
-              servings
-            </label>
-            <input
-              type="number"
-              name="servings"
-              id="servings"
-              min="1"
-              className="form__number-input"
-              defaultValue={inventoryServings}
-              required
-              // onChange={handleNumberChange}
-            />
-          </div>
-          <div className="form__number-container">
-            <label className="form__number-label" htmlFor="preserve_time">
-              preserve days
-            </label>
-            <input
-              className="form__number-input"
-              type="number"
-              name="preserve_time"
-              id="preserve_time"
-              // defaultValue={timeCalculator}
-              required
-              min="1"
-            />
-          </div>
+                className="form__add-container"
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Add a Inventory"
+                defaultValue={inventoryName}
+                required
+              ></input>
+              <div className="form__detail-container">
+                <div className="form__radios-container">
+                  <div className="form__radio-container">
+                    <input
+                      className="form__radio"
+                      value="fridge"
+                      id="fridge"
+                      name="storing_place"
+                      type="radio"
+                      defaultChecked={inventorysStoringPlace === "fridge"}
+                      // onChange={handlePreserveTime}
+                    />
+                    <label htmlFor="fridge">fridge</label>
+                  </div>
+                  <div className="form__radio-container">
+                    <input
+                      className="form__radio"
+                      value="freezer"
+                      id="freezer"
+                      name="storing_place"
+                      type="radio"
+                      defaultChecked={inventorysStoringPlace === "freezer"}
+                      // onChange={handlePreserveTime}
+                    />
+                    <label htmlFor="freezer">freezer</label>
+                  </div>
+                  <div className="form__radio-container">
+                    <input
+                      className="form__radio"
+                      value="pantry"
+                      id="pantry"
+                      name="storing_place"
+                      type="radio"
+                      defaultChecked={inventorysStoringPlace === "pantry"}
+                      // onChange={handlePreserveTime}
+                    />
+                    <label htmlFor="pantry">pantry</label>
+                  </div>
+                </div>
+                <div className="form__number-container">
+                  <label className="form__number-label" htmlFor="servings">
+                    servings
+                  </label>
+                  <input
+                    type="number"
+                    name="servings"
+                    id="servings"
+                    min="1"
+                    className="form__number-input"
+                    defaultValue={inventoryServings}
+                    required
+                    // onChange={handleNumberChange}
+                  />
+                </div>
+                <div className="form__number-container">
+                  <label className="form__number-label" htmlFor="preserve_time">
+                    preserve days
+                  </label>
+                  <input
+                    className="form__number-input"
+                    type="number"
+                    name="preserve_time"
+                    id="preserve_time"
+                    defaultValue={CustomUtils.getPreserveDayByBestBefore(
+                      inventoryBestBeforeDate
+                    )}
+                    required
+                    min="1"
+                  />
+                </div>
 
-          <button
-            // className={`form__number-button btn btn${isFormValid()? "":"-invalid"}`}
-            type="submit"
-            // disabled={!isFormValid()}
-          >
-            edit item
-          </button>
-      </div>
-      </form>
-
+                <button
+                  // className={`form__number-button btn btn${isFormValid()? "":"-invalid"}`}
+                  
+                  type="submit"
+                  // disabled={!isFormValid()}
+                >
+                  edit item
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </Modal>
