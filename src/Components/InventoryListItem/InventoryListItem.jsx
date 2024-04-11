@@ -42,7 +42,6 @@ function InventoryListItem({ inventory, CheckboxChange,setUpdatedInventory }) {
       </div>
       <div className="listitem__button-wrapper">
         <EditInventory
-          key={inventory.id}
           inventoryId={inventory.id}
           inventoryName={inventory.name}
           inventoryServings={inventory.servings}

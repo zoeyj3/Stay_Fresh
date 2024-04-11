@@ -5,7 +5,7 @@ function MenuList(){
         <div className='list'>
          {["fridge","freezer","pantry"].map((place) => (
         <Link
-
+        key={`${place}`}
         to={`myfridge/${place}`}
         >{place}</Link>
     ))}

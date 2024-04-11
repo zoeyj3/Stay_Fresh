@@ -1,7 +1,7 @@
 import InventoryListItem from "../InventoryListItem/InventoryListItem"
 import "./SearchResult.scss"
 
-function SearchResult({searchedItemData}){
+function SearchResult({searchedItemData, setUpdatedInventory}){
     console.log(searchedItemData)
 
     return(
@@ -11,6 +11,7 @@ function SearchResult({searchedItemData}){
           return (
             <InventoryListItem
             inventory={inventory}
+            setUpdatedInventory={setUpdatedInventory}
             />
           );
         })

@@ -9,7 +9,6 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 function EditInventory({
-  key,
   inventoryId,
   inventoryName,
   inventoryServings,

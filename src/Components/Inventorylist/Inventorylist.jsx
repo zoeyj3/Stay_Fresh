@@ -5,9 +5,8 @@ import axios from "axios";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function Inventorylist({newInventory}) {
+function Inventorylist({newInventory, updatedInventory, setUpdatedInventory}) {
   const { place } = useParams();
-  const [updatedInventory,setUpdatedInventory]= useState({});
   const [fullList, setFullList] = useState([]);
   const [itemChoosed,setItemChoosed] = useState({});
   

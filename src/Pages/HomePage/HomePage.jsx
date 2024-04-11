@@ -12,6 +12,7 @@ function HomePage() {
   const { place } = useParams();
   const [searchingItem, setSearchingItem] = useState(null);
   const [searchedItemData, setSearchedItemData] = useState("");
+  const [updatedInventory,setUpdatedInventory]= useState({});
 
   const handleSearch = async () => {
     console.log(searchingItem)
@@ -40,8 +41,8 @@ function HomePage() {
     <div className="homepage">
       <h1>{place}</h1>
       <Search  setSearchingItem={setSearchingItem}/>
-      {searchingItem && searchedItemData && <SearchResult searchedItemData={searchedItemData}/>}
-      <Inventory />
+      {searchingItem && searchedItemData && <SearchResult searchedItemData={searchedItemData} setUpdatedInventory={setUpdatedInventory} />}
+      <Inventory updatedInventory={updatedInventory} setUpdatedInventory={setUpdatedInventory}/>
 
       {/* {(place === "freezer" || place === "fridge" || place === "pantry") && <Inventorylist place={place} />} */}
     </div>
