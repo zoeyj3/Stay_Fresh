@@ -10,6 +10,7 @@ function SearchResult({searchedItemData, setUpdatedInventory}){
     {searchedItemData.map((inventory) => {
           return (
             <InventoryListItem
+            key={inventory.id + "_insearch"}
             inventory={inventory}
             setUpdatedInventory={setUpdatedInventory}
             />
