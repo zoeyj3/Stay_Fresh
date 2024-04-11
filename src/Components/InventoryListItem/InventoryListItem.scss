@@ -1,3 +1,4 @@
+@use '../../styles/partials/index' as *;
 .listitem{
     width: 100%;
     height: 3.25rem;
@@ -11,15 +12,33 @@
     flex-direction: row;
     align-items: center;
     &__contentwrapper{
-        padding: 0 1rem 0 1rem;
+        padding: 0 0 0 1rem;
     }
     &__checkbox{
         color:#2664CF;
     }
     &__trashicon{
-
         margin-left: auto;
-        color:#ba6969;
+        color:#d56841;
+    }
+    &__details{
+    display: flex;
+    flex-direction: row;
+    color: $color__darkgray;
+    }
+    &__details-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 1rem;
+    min-width: 5rem;
+    }
+    &__detailstext{
+        font-size: 12px;
+    }
+    &__icon{
+        height: 0.625rem;
+        padding-right:  0.5rem ;
     }
 }
 

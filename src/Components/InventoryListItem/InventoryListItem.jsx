@@ -1,5 +1,7 @@
 import "./InventoryListItem.scss";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faUtensils } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function InventoryListItem({ inventory,CheckboxChange }) {
     const handleCheckbox = (event) => {
@@ -16,10 +18,17 @@ function InventoryListItem({ inventory,CheckboxChange }) {
         onChange={handleCheckbox}
       />
       <div className="listitem__contentwrapper">
-        <p>
-          {inventory.name}, {inventory.servings} servings left, before{" "}
-          {inventory.best_before}
-        </p>
+        <p className="listitem__name">{inventory.name} </p>
+        <div className="listitem__details">
+          <div className="listitem__details-wrapper">
+          <FontAwesomeIcon className="listitem__icon" icon={faUtensils} />
+          <p className="listitem__detailstext">{inventory.servings} left </p>
+          </div>
+          <div className="listitem__details-wrapper">
+          <FontAwesomeIcon className="listitem__icon" icon={faCalendarXmark} />
+          <p className="listitem__detailstext">{inventory.best_before}</p>
+          </div>
+        </div>
       </div>
       <FontAwesomeIcon icon={faTrashCan} className="listitem__trashicon" />
     </div>
