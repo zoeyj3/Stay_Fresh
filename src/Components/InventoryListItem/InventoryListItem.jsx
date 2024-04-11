@@ -6,7 +6,7 @@ import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-function InventoryListItem({ inventory, CheckboxChange }) {
+function InventoryListItem({ inventory, CheckboxChange,setUpdatedInventory }) {
   if (!inventory) {
     return <div>hello</div>;
   }
@@ -48,6 +48,7 @@ function InventoryListItem({ inventory, CheckboxChange }) {
           inventoryServings={inventory.servings}
           inventoryBestBeforeDate={inventory.best_before}
           inventorysStoringPlace={inventory.storing_place}
+          setUpdatedInventory={setUpdatedInventory}
         />
         <FontAwesomeIcon icon={faTrashCan} className="listitem__trashicon" />
       </div>

@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 function Inventorylist({newInventory}) {
   const { place } = useParams();
- 
+  const [updatedInventory,setUpdatedInventory]= useState("");
   const [fullList, setFullList] = useState([]);
   const [itemChoosed,setItemChoosed] = useState({});
   
@@ -19,7 +19,7 @@ function Inventorylist({newInventory}) {
       setFullList(sortedData);
     };
     fetchInventoryList();
-  }, [newInventory]);
+  }, [newInventory, updatedInventory]);
 
 
   const filterList = fullList.filter(
@@ -56,6 +56,7 @@ function Inventorylist({newInventory}) {
             key={inventory.id}
             inventory={inventory}
             CheckboxChange={CheckboxChange}
+            setUpdatedInventory={setUpdatedInventory}
             />
           );
         })

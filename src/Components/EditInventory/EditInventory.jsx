@@ -14,7 +14,8 @@ function EditInventory({
   inventoryName,
   inventoryServings,
   inventoryBestBeforeDate,
-  inventorysStoringPlace,
+  inventoryStoringPlace,
+  setUpdatedInventory
 }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -35,20 +36,22 @@ function EditInventory({
       ),
     };
     console.log(updatedItem);
+    setUpdatedInventory(updatedItem);
 
     const postUpdatedItem = async () =>{
       try {
-        await axios.patch(
+        await axios.put(
           `http://localhost:8080/inventory/${inventoryId}`,
           updatedItem
         );
-        console.log("updated")
+        
         handleClose()
+        console.log("updated");
       } catch (error){
         console.error("Failed to edit", error);
       }
     }
-    postUpdatedItem(event)
+    postUpdatedItem()
   }
 
   return (
@@ -85,7 +88,7 @@ function EditInventory({
                       id="fridge"
                       name="storing_place"
                       type="radio"
-                      defaultChecked={inventorysStoringPlace === "fridge"}
+                      defaultChecked={inventoryStoringPlace === "fridge"}
                       // onChange={handlePreserveTime}
                     />
                     <label htmlFor="fridge">fridge</label>
@@ -97,7 +100,7 @@ function EditInventory({
                       id="freezer"
                       name="storing_place"
                       type="radio"
-                      defaultChecked={inventorysStoringPlace === "freezer"}
+                      defaultChecked={inventoryStoringPlace === "freezer"}
                       // onChange={handlePreserveTime}
                     />
                     <label htmlFor="freezer">freezer</label>
@@ -109,7 +112,7 @@ function EditInventory({
                       id="pantry"
                       name="storing_place"
                       type="radio"
-                      defaultChecked={inventorysStoringPlace === "pantry"}
+                      defaultChecked={inventoryStoringPlace === "pantry"}
                       // onChange={handlePreserveTime}
                     />
                     <label htmlFor="pantry">pantry</label>

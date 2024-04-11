@@ -7,16 +7,23 @@ import "./Form.scss";
 import * as CustomUtils from '../../CustomUtils.js'
 
 function Form({ objectId, keyword, setNewInventory }) {
-  const [hidden, sethidden] = useState(true);
+  const [hidden, setHidden] = useState(true);
   const [storingCondition, setStoringCondition] = useState("");
 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
   // click to show detail input
-  function handleOnclick(event) {
-    sethidden(false);
+  function handleOnclick() {
+    setHidden(false);
   }
+  // click somewhere else to hide detail input 
+  function handleEditClose(){
+    if(!hidden){
+      window.onclick = setHidden(true)
+    }
+  }
+  
   // click storing place to change the default time
   function handlePreserveTime(event) {
     console.log(event.target.value);
