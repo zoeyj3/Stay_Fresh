@@ -35,7 +35,7 @@ function HomePage() {
         return
     }
     handleSearch()
-  },[searchingItem])
+  },[searchingItem, updatedInventory])
 
   return (
     <div className="homepage">

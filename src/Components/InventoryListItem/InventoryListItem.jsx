@@ -1,6 +1,7 @@
 import "./InventoryListItem.scss";
 import EditInventory from "../EditInventory/EditInventory";
 import { useState } from "react";
+import axios from "axios";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
@@ -10,9 +11,21 @@ function InventoryListItem({ inventory, CheckboxChange,setUpdatedInventory }) {
   if (!inventory) {
     return <div>hello</div>;
   }
+
   const handleCheckbox = (event) => {
     CheckboxChange(inventory.name, event.target.checked);
   };
+
+  const handleDelete = async (inventoryId) => {
+    try {
+      await axios.delete(`http://localhost:8080/inventory/${inventoryId}`);
+      console.log(`${inventory.name} has been deleted`);
+      setUpdatedInventory(inventoryId);
+    } catch (error) {
+      console.error("Error deleting inventory item:", error);
+    }
+  };
+
   return (
     <>
     {inventory && (<div className="listitem">
@@ -49,7 +62,7 @@ function InventoryListItem({ inventory, CheckboxChange,setUpdatedInventory }) {
           inventoryStoringPlace={inventory.storing_place}
           setUpdatedInventory={setUpdatedInventory}
         />
-        <FontAwesomeIcon icon={faTrashCan} className="listitem__trashicon" />
+        <FontAwesomeIcon icon={faTrashCan} className="listitem__trashicon" onClick={() => handleDelete(inventory.id)}/>
       </div>
     </div>)}
     </>
