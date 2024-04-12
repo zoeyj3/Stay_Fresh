@@ -2,7 +2,10 @@ import RecipeCard from "../RecipeCard/RecipeCard";
 import './RecipeList.scss'
 function RecipeList({recipeList}) {
     return (
-    <ul className="recipelist">
+
+      <>
+
+    {recipeList && (<ul className="recipelist">
     {recipeList.map((recipe) => (
         <RecipeCard
           key={recipe.idMeal}
@@ -11,8 +14,11 @@ function RecipeList({recipeList}) {
           picture={recipe.strMealThumb}
         />
       ))}
+    </ul>)}
+    </>
 
-    </ul>
+
+
     );
   }
   export default RecipeList;

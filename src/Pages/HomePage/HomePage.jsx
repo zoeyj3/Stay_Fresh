@@ -10,12 +10,13 @@ import Inventory from "../../Components/Inventory/Inventory";
 
 function HomePage() {
   const { place } = useParams();
+
   const [searchingItem, setSearchingItem] = useState(null);
   const [searchedItemData, setSearchedItemData] = useState("");
-  const [updatedInventory,setUpdatedInventory]= useState({});
-
+  const [updatedInventory, setUpdatedInventory] = useState({});
+  // console.log( place )
   const handleSearch = async () => {
-    console.log(searchingItem)
+    console.log(searchingItem);
     try {
       const response = await axios.get(
         `http://localhost:8080/inventory-name/${searchingItem}`
@@ -29,20 +30,32 @@ function HomePage() {
     }
   };
 
+
+
   useEffect(() => {
     console.log("useEffect triggered", searchingItem);
-    if(!searchingItem) {
-        return
+    if (!searchingItem) {
+      return;
     }
-    handleSearch()
-  },[searchingItem, updatedInventory])
+    handleSearch();
+  }, [searchingItem, updatedInventory]);
 
   return (
     <div className="homepage">
-      <h1>{place}</h1>
-      <Search  setSearchingItem={setSearchingItem}/>
-      {searchingItem && searchedItemData && <SearchResult searchedItemData={searchedItemData} setUpdatedInventory={setUpdatedInventory} />}
-      <Inventory updatedInventory={updatedInventory} setUpdatedInventory={setUpdatedInventory}/>
+      {place ? (<h1>{place}</h1>):(<h1>HOME</h1>)}
+
+      <Search setSearchingItem={setSearchingItem} />
+      {searchingItem && searchedItemData && (
+        <SearchResult
+          searchedItemData={searchedItemData}
+          setUpdatedInventory={setUpdatedInventory}
+        />
+      )}
+      <Inventory
+        updatedInventory={updatedInventory}
+        setUpdatedInventory={setUpdatedInventory}
+        place={place}
+      />
 
       {/* {(place === "freezer" || place === "fridge" || place === "pantry") && <Inventorylist place={place} />} */}
     </div>

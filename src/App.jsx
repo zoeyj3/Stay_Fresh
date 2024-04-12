@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
 import RecipePage from "./Pages/RecipePage/RecipePage"
 import RecipeDetailPage from "./Pages/RecipeDetailPage/RecipeDetailPage";
+import DefaultPage from "./Pages/DefaultPage/DefaultPage";
 import Menu from "./Components/Menu/Menu"
 import Header from "./Components/Header/Header"
 import './App.scss'

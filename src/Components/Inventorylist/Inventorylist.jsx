@@ -6,12 +6,13 @@ import { useNavigate, Link, useParams, BrowserRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
-function Inventorylist({newInventory, updatedInventory, setUpdatedInventory}) {
-  const { place } = useParams();
+function Inventorylist({newInventory, updatedInventory, setUpdatedInventory,place}) {
+  
   const navigate = useNavigate();
   const [fullList, setFullList] = useState([]);
   const [itemChoosed,setItemChoosed] = useState({});
-  
+  console.log(place)
+
   useEffect(() => {
     const fetchInventoryList = async () => {
       const response = await axios.get("http://localhost:8080/inventory");
@@ -27,6 +28,7 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory}) {
     (food) => food.storing_place === place
   );
   console.log(filterList)
+
 
 
   const CheckboxChange = (itemName, itemStatus) => {
@@ -50,7 +52,7 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory}) {
     {filterList && (
         <div className='inventorylist'>
       <form className='inventorylist__checkbox-form' onSubmit={handleSubmit}>
-        <button type="Submit">Search Recipe</button>
+      <button type="Submit">Search Recipe</button>
       <ul>
         {filterList.map((inventory) => {
           return (
@@ -64,6 +66,19 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory}) {
         })
         }
       </ul>
+      {!place && (<ul>
+        {fullList.map((inventory) => {
+          return (
+            <InventoryListItem
+            key={inventory.id}
+            inventory={inventory}
+            CheckboxChange={CheckboxChange}
+            setUpdatedInventory={setUpdatedInventory}
+            />
+          );
+        })
+        }
+      </ul>)}
       
       </form>
       </div>
