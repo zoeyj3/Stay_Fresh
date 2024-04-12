@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import StartPage from "./Pages/StartPage/StartPage";
 import HomePage from "./Pages/HomePage/HomePage";
-import Recipe from "./Pages/Recipe/Recipe"
+import RecipePage from "./Pages/RecipePage/RecipePage"
+import RecipeDetailPage from "./Pages/RecipeDetailPage/RecipeDetailPage";
 import Menu from "./Components/Menu/Menu"
 import Header from "./Components/Header/Header"
-import Form from "./Components/Form/Form";
-import AddInventory from "./Components/AddInventory/AddInventory";
 import './App.scss'
 
 
@@ -19,8 +18,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/myfridge/:place" element={<HomePage />} />
           <Route path="/myfridge" element={<HomePage />} />
-          <Route path="/recipe/:names" element={<Recipe />} />
-          <Route path="/recipe/detail/:id" element={<Recipe />} />
+          <Route path="/recipe/:names" element={<RecipePage />} />
+          <Route path="/recipe-detail/:mealId" element={<RecipeDetailPage />} />
       </Routes>
       </BrowserRouter>
     </div>
