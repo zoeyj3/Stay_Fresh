@@ -8,9 +8,9 @@ import { useState, useEffect } from "react";
 
 function Inventorylist({newInventory, updatedInventory, setUpdatedInventory}) {
   const { place } = useParams();
+  const navigate = useNavigate();
   const [fullList, setFullList] = useState([]);
   const [itemChoosed,setItemChoosed] = useState({});
-  const [selectedNames,setSelectedNames]= useState("");
   
   useEffect(() => {
     const fetchInventoryList = async () => {
@@ -40,8 +40,7 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory}) {
   function handleSubmit(event){
     event.preventDefault();
     const selectedNames = Object.keys(itemChoosed).filter(key => itemChoosed[key] === true).join(',');
-    setSelectedNames(selectedNames)
-    // browserHistory.push(`/recipe/${selectedNames}`)
+    navigate(`/recipe/${selectedNames}`)
     console.log(selectedNames);
   }
 
@@ -51,7 +50,6 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory}) {
     {filterList && (
         <div className='inventorylist'>
       <form className='inventorylist__checkbox-form' onSubmit={handleSubmit}>
-        {/* <Link to={`/recipe/${selectedNames}`}><button type="Submit">Search Recipe</button></Link> */}
         <button type="Submit">Search Recipe</button>
       <ul>
         {filterList.map((inventory) => {
