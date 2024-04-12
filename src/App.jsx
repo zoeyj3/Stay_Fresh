@@ -19,7 +19,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/myfridge/:place" element={<HomePage />} />
           <Route path="/myfridge" element={<HomePage />} />
-          <Route path="/recipe/:recipeId" element={<Recipe />} />
+          <Route path="/recipe/:names" element={<Recipe />} />
+          <Route path="/recipe/detail/:id" element={<Recipe />} />
       </Routes>
       </BrowserRouter>
     </div>
