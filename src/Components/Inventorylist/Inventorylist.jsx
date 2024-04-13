@@ -11,17 +11,23 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory,plac
   const navigate = useNavigate();
   const [fullList, setFullList] = useState([]);
   const [itemChoosed,setItemChoosed] = useState({});
+  const [isSortByExpireDate, setIsSortByExpireDate] = useState(true);
   console.log(place)
 
   useEffect(() => {
     const fetchInventoryList = async () => {
       const response = await axios.get("http://localhost:8080/inventory");
       //sort the data by best_before
-      const sortedData = response.data.sort((a, b) => new Date(a.best_before) - new Date(b.best_before))
+      let sortedData 
+      if (isSortByExpireDate){
+        sortedData = response.data.sort((a, b) => new Date(a.best_before) - new Date(b.best_before))
+      } else{
+        sortedData = response.data.sort((a, b) => new Date(b.updated_time) - new Date(a.updated_time))
+      }
       setFullList(sortedData);
     };
     fetchInventoryList();
-  }, [newInventory, updatedInventory]);
+  }, [newInventory, updatedInventory, isSortByExpireDate]);
 
 
   const filterList = fullList.filter(
@@ -29,7 +35,10 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory,plac
   );
   console.log(filterList)
 
-
+  const changeSort = (e) => {
+    e.preventDefault()
+    setIsSortByExpireDate(!isSortByExpireDate)
+  }
 
   const CheckboxChange = (itemName, itemStatus) => {
     setItemChoosed((prev) => ({
@@ -53,6 +62,7 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory,plac
         <div className='inventorylist'>
       <form className='inventorylist__checkbox-form' onSubmit={handleSubmit}>
       <button type="Submit">Search Recipe</button>
+      <button onClick={changeSort}>Sort</button>
       <ul>
         {filterList.map((inventory) => {
           return (
