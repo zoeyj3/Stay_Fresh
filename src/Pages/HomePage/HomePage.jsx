@@ -11,12 +11,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 import Inventory from "../../Components/Inventory/Inventory";
 
 function HomePage() {
   const { place } = useParams();
 
   const [searchingItem, setSearchingItem] = useState(null);
+  const [searchResultHidden,setSearchResultHidden] = useState(false);
   const [searchedItemData, setSearchedItemData] = useState("");
   const [updatedInventory, setUpdatedInventory] = useState({});
   // console.log( place )
@@ -45,13 +47,21 @@ function HomePage() {
 
   return (
     <div className="homepage">
-      
+      <div className="homepage__titlebox">
+        <Menu className="homepage__menuicon" />
+        {place ? (
+          <h1 className="homepage__title">{place}</h1>
+        ) : (
+          <h1 className="homepage__title">HOME</h1>
+        )}
+        <Search
+          className="search"
+          setSearchingItem={setSearchingItem}
+          setSearchResultHidden={setSearchResultHidden}
+        />
+      </div>
 
-      <Menu/>
-      {place ? <h1>{place}</h1> : <h1>HOME</h1>}
-
-      <Search setSearchingItem={setSearchingItem} />
-      {searchingItem && searchedItemData && (
+      {searchingItem && searchedItemData && (searchResultHidden===false) &&(
         <SearchResult
           searchedItemData={searchedItemData}
           setUpdatedInventory={setUpdatedInventory}

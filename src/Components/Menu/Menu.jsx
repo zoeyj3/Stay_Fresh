@@ -23,9 +23,9 @@ function Menu() {
   };
   return (
     <div className="menu">
-      <Button onClick={toggleDrawer(true)}>
-        <FontAwesomeIcon icon={faBars} />
-      </Button>
+      <a  onClick={toggleDrawer(true)}>
+        <FontAwesomeIcon className="menu__hambergericon" icon={faBars} />
+      </a>
       <Drawer className="menu__card" open={open} onClose={toggleDrawer(false)}>
         <MenuList />
       </Drawer>

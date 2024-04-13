@@ -8,4 +8,10 @@
     @include tablet{
         margin-left: 12rem;
     }
+    &__titlebox{
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+    }
+
 }

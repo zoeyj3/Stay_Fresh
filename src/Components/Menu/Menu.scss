@@ -14,3 +14,11 @@
 //        visibility: visible;
 //     }
 // }
+.menu{
+
+    &__hambergericon{
+        color: $color__blue;
+        padding:0 1rem 0 1rem
+
+    }
+}
