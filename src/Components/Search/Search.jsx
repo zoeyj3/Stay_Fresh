@@ -8,14 +8,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function Search({ setSearchingItem,setSearchResultHidden }) {
+function Search({ setSearchingItem, setSearchedItemData}) {
   const [hidden, setHidden] = useState(true);
   function handlehidden() {
     setHidden(false);
   }
   function handleclear() {
     setHidden(true);
-    setSearchResultHidden(true)
+    setSearchedItemData([])
   }
 
   // function handleSearch(event) {

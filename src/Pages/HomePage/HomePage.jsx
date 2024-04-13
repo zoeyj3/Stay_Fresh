@@ -18,7 +18,6 @@ function HomePage() {
   const { place } = useParams();
 
   const [searchingItem, setSearchingItem] = useState(null);
-  const [searchResultHidden,setSearchResultHidden] = useState(false);
   const [searchedItemData, setSearchedItemData] = useState("");
   const [updatedInventory, setUpdatedInventory] = useState({});
   // console.log( place )
@@ -57,11 +56,11 @@ function HomePage() {
         <Search
           className="search"
           setSearchingItem={setSearchingItem}
-          setSearchResultHidden={setSearchResultHidden}
+          setSearchedItemData={setSearchedItemData}
         />
       </div>
 
-      {searchingItem && searchedItemData && (searchResultHidden===false) &&(
+      {searchingItem && searchedItemData && (
         <SearchResult
           searchedItemData={searchedItemData}
           setUpdatedInventory={setUpdatedInventory}
