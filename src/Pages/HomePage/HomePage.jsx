@@ -2,8 +2,13 @@ import Inventorylist from "../../Components/Inventorylist/Inventorylist";
 import AddInventory from "../../Components/AddInventory/AddInventory";
 import SearchResult from "../../Components/SearchResult/SearchResult";
 import Search from "../../Components/Search/Search";
+import Menu from "../../Components/Menu/Menu";
 import "./HomePage.scss";
 import axios from "axios";
+
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Inventory from "../../Components/Inventory/Inventory";
@@ -30,8 +35,6 @@ function HomePage() {
     }
   };
 
-
-
   useEffect(() => {
     console.log("useEffect triggered", searchingItem);
     if (!searchingItem) {
@@ -42,7 +45,10 @@ function HomePage() {
 
   return (
     <div className="homepage">
-      {place ? (<h1>{place}</h1>):(<h1>HOME</h1>)}
+      
+
+      <Menu/>
+      {place ? <h1>{place}</h1> : <h1>HOME</h1>}
 
       <Search setSearchingItem={setSearchingItem} />
       {searchingItem && searchedItemData && (

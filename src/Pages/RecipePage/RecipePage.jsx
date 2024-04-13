@@ -5,6 +5,8 @@ import RecipeCard from "../../Components/RecipeCard/RecipeCard";
 import RecipeList from "../../Components/RecipeList/RecipeList";
 import "./RecipePage.scss";
 
+
+
 function RecipePage() {
   const { names } = useParams();
   const [recipeList, setRecipeList] = useState([]);
@@ -27,7 +29,7 @@ function RecipePage() {
 
   return (
     <section className="recipepage">
-      <h1>{names}</h1>
+      <h1>Special Pick with {names}</h1>
 
         <RecipeList recipeList={recipeList}/>
 
