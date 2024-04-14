@@ -20,7 +20,7 @@ export function getBestBeforeDate(preservingTime) {
 
 export function getPreserveDayByBestBefore(bestBeforeDate) {
   const bestBefore = new Date(bestBeforeDate);
-  const today = new Date();
+  const today = new Date(getCurrentDate());
   const diffInTime = bestBefore.getTime() - today.getTime()
   const diffInDays = Math.ceil(diffInTime / (1000 * 3600 * 24))
   return diffInDays;
