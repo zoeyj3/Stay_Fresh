@@ -2,7 +2,7 @@ import Inventorylist from "../../Components/Inventorylist/Inventorylist";
 import AddInventory from "../../Components/AddInventory/AddInventory";
 import SearchResult from "../../Components/SearchResult/SearchResult";
 import Search from "../../Components/Search/Search";
-import Menu from "../../Components/Menu/Menu";
+import MenuButton from "../../Components/MenuButton/MenuButton";
 import "./HomePage.scss";
 import axios from "axios";
 
@@ -47,7 +47,7 @@ function HomePage() {
   return (
     <div className="homepage">
       <div className="homepage__titlebox">
-        <Menu className="homepage__menuicon" />
+        <MenuButton className="homepage__menuicon" />
         {place ? (
           <h1 className="homepage__title">{place}</h1>
         ) : (

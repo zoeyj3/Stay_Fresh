@@ -1,3 +1,4 @@
+@use '../src/styles/partials/index' as *;
 .App{
   display: flex;
   flex-direction: column;
@@ -55,3 +56,16 @@ ul, li{
 button{
   border: none;
 }
+a:link {
+  color:inherit;
+}
+Link{
+  color:inherit;  
+}
+a:visited{
+  color:inherit;
+}
+Link:visited{
+  color:inherit;
+}
+

@@ -1,5 +1,6 @@
 @use '../../styles/partials/index' as *;
 .header {
+    z-index:1400;
     background-color: #2664CF;
     height: 3rem;
     padding: 0.5rem 1.25rem 0.5rem 1rem;
