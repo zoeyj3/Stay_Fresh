@@ -50,9 +50,11 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory,plac
 
   function handleSubmit(event){
     event.preventDefault();
+    if(itemChoosed ){
     const selectedNames = Object.keys(itemChoosed).filter(key => itemChoosed[key] === true).join(',');
     navigate(`/recipe/${selectedNames}`)
     console.log(selectedNames);
+    }
   }
 
 
