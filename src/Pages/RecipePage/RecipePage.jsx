@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import RecipeCard from "../../Components/RecipeCard/RecipeCard";
 import RecipeList from "../../Components/RecipeList/RecipeList";
+import MenuButton from "../../Components/MenuButton/MenuButton";
 import "./RecipePage.scss";
-
-
+import emptyfridge from "../../Assets/images/emptyfridge.png";
 
 function RecipePage() {
   const { names } = useParams();
@@ -21,18 +21,23 @@ function RecipePage() {
     setRecipeList(response.data.meals);
   }
 
-  
-
   useEffect(() => {
     callRecipeByInventoryName(names);
   }, []);
 
   return (
     <section className="recipepage">
-      <h1>Special Pick with {names}</h1>
-
-        <RecipeList recipeList={recipeList}/>
-
+      <div className="recipepage__titlebox">
+        <MenuButton/>
+        <h1>Special Pick with {names}</h1>
+      </div>
+      <RecipeList recipeList={recipeList} />
+      {!recipeList && (
+        <div className="recipepage__norecipe">
+          <img className="recipepage__fridgepic" src={emptyfridge} />
+          <h2> Chef is inventing recipes with {names}!</h2>
+        </div>
+      )}
     </section>
   );
 }

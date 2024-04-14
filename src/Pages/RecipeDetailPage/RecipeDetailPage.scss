@@ -1,5 +1,24 @@
+@use '../../styles/partials/index' as *;
 
 .recipedetailpage{
+    padding: 2rem 1rem 2rem 1rem;
+    background-color: rgb(255, 252, 248);
+    height: auto;
     width: 100%;
-    padding-left: 12rem;
+    @include tablet{
+        padding: 2rem 5rem 2rem 5rem;
+    }
+    @include desktop{
+        padding: 2rem 12rem 2rem 12rem;
+    }
+    &__titlebox{
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+        padding-bottom: 0.75rem;
+    }
+    &__heroimage{
+        width: 100%;
+    }
+
 }
