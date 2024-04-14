@@ -48,8 +48,8 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory,plac
   };
 
 
-  function handleSubmit(event){
-    event.preventDefault();
+  function handleSubmit(){
+
     if(itemChoosed ){
     const selectedNames = Object.keys(itemChoosed).filter(key => itemChoosed[key] === true).join(',');
     navigate(`/recipe/${selectedNames}`)
@@ -62,8 +62,8 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory,plac
     <>
     {filterList && (
         <div className='inventorylist'>
-      <form className='inventorylist__checkbox-form' onSubmit={handleSubmit}>
-      <button type="Submit">Search Recipe</button>
+      <div className='inventorylist__checkbox-form' >
+      <button onClick={handleSubmit}>Search Recipe</button>
       <button onClick={changeSort}>Sort</button>
       <ul>
         {filterList.map((inventory) => {
@@ -92,7 +92,7 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory,plac
         }
       </ul>)}
       
-      </form>
+      </div>
       </div>
       )}
     </>
