@@ -6,11 +6,10 @@ import { useNavigate, Link, useParams, BrowserRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
-function Inventorylist({newInventory, updatedInventory, setUpdatedInventory,place}) {
+function Inventorylist({newInventory, updatedInventory, itemChoosed, setItemChoosed, setUpdatedInventory,place}) {
   
   const navigate = useNavigate();
   const [fullList, setFullList] = useState([]);
-  const [itemChoosed,setItemChoosed] = useState({});
   const [isSortByExpireDate, setIsSortByExpireDate] = useState(true);
   console.log(place)
 
@@ -48,13 +47,13 @@ function Inventorylist({newInventory, updatedInventory, setUpdatedInventory,plac
   };
 
 
-  function handleSubmit(){
-
-    if(itemChoosed ){
-    const selectedNames = Object.keys(itemChoosed).filter(key => itemChoosed[key] === true).join(',');
-    navigate(`/recipe/${selectedNames}`)
-    console.log(selectedNames);
+  function handleSubmit(event){
+    if(itemChoosed && Object.keys(itemChoosed).length > 0){
+      const selectedNames = Object.keys(itemChoosed).filter(key => itemChoosed[key] === true).join(',');
+      navigate(`/recipe/${selectedNames}`)
+      console.log(selectedNames);
     }
+
   }
 
 
