@@ -16,6 +16,7 @@ function Search({ setSearchingItem, setSearchedItemData}) {
   function handleclear() {
     setHidden(true);
     setSearchedItemData([])
+    setSearchingItem("")
   }
 
   // function handleSearch(event) {

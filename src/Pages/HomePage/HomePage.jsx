@@ -69,13 +69,13 @@ function HomePage() {
           setItemChoosed={setItemChoosed}
         />
       )}
-      <Inventory
+      {(!searchingItem) && (<Inventory
         updatedInventory={updatedInventory}
         setUpdatedInventory={setUpdatedInventory}
         setItemChoosed={setItemChoosed}
         itemChoosed={itemChoosed}
         place={place}
-      />
+      />)}
 
       {/* {(place === "freezer" || place === "fridge" || place === "pantry") && <Inventorylist place={place} />} */}
     </div>
