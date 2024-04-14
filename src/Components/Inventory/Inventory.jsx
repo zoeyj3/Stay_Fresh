@@ -2,7 +2,7 @@ import { useState } from "react";
 import AddInventory from "../AddInventory/AddInventory";
 import Inventorylist from "../Inventorylist/Inventorylist";
 
-function Inventory({ updatedInventory, setUpdatedInventory,place }) {
+function Inventory({ updatedInventory, setUpdatedInventory, place, itemChoosed, setItemChoosed }) {
   const [newInventory, setNewInventory] = useState([]);
 
   return (
@@ -13,6 +13,8 @@ function Inventory({ updatedInventory, setUpdatedInventory,place }) {
         newInventory={newInventory}
         updatedInventory={updatedInventory}
         setUpdatedInventory={setUpdatedInventory}
+        setItemChoosed={setItemChoosed}
+        itemChoosed={itemChoosed}
       />
     </>
   );

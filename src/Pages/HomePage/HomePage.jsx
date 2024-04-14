@@ -20,6 +20,8 @@ function HomePage() {
   const [searchingItem, setSearchingItem] = useState(null);
   const [searchedItemData, setSearchedItemData] = useState("");
   const [updatedInventory, setUpdatedInventory] = useState({});
+  const [itemChoosed,setItemChoosed] = useState({});
+
   // console.log( place )
   const handleSearch = async () => {
     console.log(searchingItem);
@@ -64,11 +66,14 @@ function HomePage() {
         <SearchResult
           searchedItemData={searchedItemData}
           setUpdatedInventory={setUpdatedInventory}
+          setItemChoosed={setItemChoosed}
         />
       )}
       <Inventory
         updatedInventory={updatedInventory}
         setUpdatedInventory={setUpdatedInventory}
+        setItemChoosed={setItemChoosed}
+        itemChoosed={itemChoosed}
         place={place}
       />
 
