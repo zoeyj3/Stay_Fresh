@@ -17,7 +17,7 @@ function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
   }
   if (inventory.days_to_expire < 0) {
     expired = true;
-  } else if (inventory.days_to_expire < 3) {
+  } else if (inventory.days_to_expire < 4) {
     expirewarning = true;
   }
 
