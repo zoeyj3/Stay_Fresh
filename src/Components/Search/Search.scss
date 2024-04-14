@@ -22,6 +22,9 @@
         color: #fff;
         height: 1rem;
         padding: 0.125rem;
+        @include tablet{
+            height: 1.25rem;
+        }
     }
     &__wrapper{
         width: 90%;

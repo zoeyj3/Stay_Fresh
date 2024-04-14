@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddInventory from "../AddInventory/AddInventory";
 import Inventorylist from "../Inventorylist/Inventorylist";
+import "./Inventory.scss"
 
 function Inventory({ updatedInventory, setUpdatedInventory, place, itemChoosed, setItemChoosed }) {
   const [newInventory, setNewInventory] = useState([]);

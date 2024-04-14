@@ -4,7 +4,7 @@ import axios from "axios";
 
 import "./Form.scss";
 
-import * as CustomUtils from '../../CustomUtils.js'
+import * as CustomUtils from "../../CustomUtils.js";
 
 function Form({ objectId, keyword, setNewInventory }) {
   const [hidden, setHidden] = useState(true);
@@ -17,13 +17,13 @@ function Form({ objectId, keyword, setNewInventory }) {
   function handleOnclick() {
     setHidden(false);
   }
-  // click somewhere else to hide detail input 
-  function handleEditClose(){
-    if(!hidden){
-      window.onclick = setHidden(true)
-    }
-  }
-  
+  // click somewhere else to hide detail input
+  // function handleEditClose(){
+  //   if(!hidden){
+  //     window.onclick = setHidden(true)
+  //   }
+  // }
+
   // click storing place to change the default time
   function handlePreserveTime(event) {
     console.log(event.target.value);
@@ -40,7 +40,7 @@ function Form({ objectId, keyword, setNewInventory }) {
     }
   }
 
-  function handleAddInventory(event) {
+  async function handleAddInventory(event) {
     event.preventDefault();
 
     const newItem = {
@@ -49,20 +49,27 @@ function Form({ objectId, keyword, setNewInventory }) {
       servings: event.target.servings.value,
       updated_time: CustomUtils.getCurrentDate(),
       preserve_time: event.target.preserve_time.value,
-      best_before: CustomUtils.getBestBeforeDate(event.target.preserve_time.value),
+      best_before: CustomUtils.getBestBeforeDate(
+        event.target.preserve_time.value
+      ),
     };
     console.log(newItem);
-
     try {
-      const response = axios.post("http://localhost:8080/add", newItem);
-      const Answer = response.data;
-      console.log(Answer);
+      const response = await axios.post("http://localhost:8080/add", newItem);
+
+      console.log(response.data);
       setNewInventory(newItem);
       document.getElementById("form").reset();
     } catch (error) {
+    if (error.response.status === 409) {
+      alert(
+        "This item already exists. Do not buy it.\u{1F604}\u{1F604}\u{1F604}"
+      );
+    } else {
       console.error("Error adding item", error);
     }
   }
+}
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -153,7 +160,9 @@ function Form({ objectId, keyword, setNewInventory }) {
           </div>
 
           <button
-            className={`form__number-button btn btn${isFormValid()? "":"-invalid"}`}
+            className={`form__number-button btn btn${
+              isFormValid() ? "" : "-invalid"
+            }`}
             type="submit"
             disabled={!isFormValid()}
           >
@@ -164,4 +173,4 @@ function Form({ objectId, keyword, setNewInventory }) {
     </form>
   );
 }
-export default Form;
+export default Form

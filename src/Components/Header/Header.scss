@@ -8,7 +8,10 @@
     flex-direction: row;
     align-items: center;
     @include tablet{
-        padding: 0.5rem 2rem 0.5rem 2rem;
+        padding: 0.5rem 5rem 0.5rem 5rem;
+    }
+    @include desktop{
+        padding: 0.5rem 12rem 0.5rem 12rem;
     }
 
     &__logo {

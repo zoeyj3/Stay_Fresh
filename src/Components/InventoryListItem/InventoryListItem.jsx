@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -88,6 +88,13 @@ function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
                     </p>
                   </>
                 )}
+
+              </div>
+              <div className="listitem__details-wrapper-hidden">
+                <FontAwesomeIcon className="listitem__icon" icon={faDoorOpen}/>
+                <p className="listitem__detailstext">
+                {inventory.storing_place}
+                </p>
               </div>
             </div>
           </div>
