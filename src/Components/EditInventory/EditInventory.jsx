@@ -90,7 +90,7 @@ function EditInventory({
                       name="storing_place"
                       type="radio"
                       defaultChecked={inventoryStoringPlace === "fridge"}
-                      // onChange={handlePreserveTime}
+
                     />
                     <label htmlFor="fridge">fridge</label>
                   </div>
@@ -102,7 +102,7 @@ function EditInventory({
                       name="storing_place"
                       type="radio"
                       defaultChecked={inventoryStoringPlace === "freezer"}
-                      // onChange={handlePreserveTime}
+
                     />
                     <label htmlFor="freezer">freezer</label>
                   </div>
@@ -114,7 +114,7 @@ function EditInventory({
                       name="storing_place"
                       type="radio"
                       defaultChecked={inventoryStoringPlace === "pantry"}
-                      // onChange={handlePreserveTime}
+
                     />
                     <label htmlFor="pantry">pantry</label>
                   </div>
@@ -131,7 +131,7 @@ function EditInventory({
                     className="form__number-input"
                     defaultValue={inventoryServings}
                     required
-                    // onChange={handleNumberChange}
+
                   />
                 </div>
                 <div className="form__number-container">
@@ -152,10 +152,7 @@ function EditInventory({
                 </div>
 
                 <button
-                  // className={`form__number-button btn btn${isFormValid()? "":"-invalid"}`}
-                  
                   type="submit"
-                  // disabled={!isFormValid()}
                 >
                   edit item
                 </button>

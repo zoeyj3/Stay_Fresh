@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
+
 import "./MenuList.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSnowflake } from "@fortawesome/free-solid-svg-icons";
 import { faBoxesPacking } from "@fortawesome/free-solid-svg-icons";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import fridgeicon from "../../Assets/icons/refrigerator.svg";
 
 function MenuList() {

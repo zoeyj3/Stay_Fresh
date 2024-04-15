@@ -13,7 +13,7 @@ function SearchResult({searchedItemData, setUpdatedInventory, setItemChoosed}){
 
     return(
     <>
-    <ul>
+    <ul className="searchresult">
     {searchedItemData.map((inventory) => {
           return (
             <InventoryListItem

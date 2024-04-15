@@ -1,6 +1,6 @@
 import "./InventoryListItem.scss";
 import EditInventory from "../EditInventory/EditInventory";
-import { useState } from "react";
+
 import axios from "axios";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
@@ -12,9 +12,8 @@ function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
   let expired = false;
   let expirewarning = false;
 
-  if (!inventory) {
-    return <div>hello</div>;
-  }
+
+   // filtering the item expired and going to expire
   if (inventory.days_to_expire < 0) {
     expired = true;
   } else if (inventory.days_to_expire < 4) {

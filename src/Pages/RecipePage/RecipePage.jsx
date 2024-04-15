@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import RecipeCard from "../../Components/RecipeCard/RecipeCard";
 import RecipeList from "../../Components/RecipeList/RecipeList";
 import MenuButton from "../../Components/MenuButton/MenuButton";
 import "./RecipePage.scss";

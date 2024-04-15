@@ -17,12 +17,7 @@ function Form({ objectId, keyword, setNewInventory }) {
   function handleOnclick() {
     setHidden(false);
   }
-  // click somewhere else to hide detail input
-  // function handleEditClose(){
-  //   if(!hidden){
-  //     window.onclick = setHidden(true)
-  //   }
-  // }
+
 
   // click storing place to change the default time
   function handlePreserveTime(event) {

@@ -1,8 +1,8 @@
 import "./Inventorylist.scss";
 import InventoryListItem from "../InventoryListItem/InventoryListItem";
-import AddInventory from "../../Components/AddInventory/AddInventory";
+
 import axios from "axios";
-import { useNavigate, Link, useParams, BrowserRouter } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,6 +26,7 @@ function Inventorylist({
       const response = await axios.get("http://localhost:8080/inventory");
       //sort the data by best_before
       let sortedData;
+      // sorting between bestbefore and update_time
       if (isSortByExpireDate) {
         sortedData = response.data.sort(
           (a, b) => new Date(a.best_before) - new Date(b.best_before)
@@ -48,6 +49,7 @@ function Inventorylist({
     setIsSortByExpireDate(!isSortByExpireDate);
   };
 
+  // set itemchoose list contains all the check/ uncheck key value pair
   const CheckboxChange = (itemName, itemStatus) => {
     setItemChoosed((prev) => ({
       ...prev,

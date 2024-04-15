@@ -4,8 +4,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import axios from "axios";
-import { Link } from "react-router-dom";
+
 import { useState } from "react";
 
 function Search({ setSearchingItem, setSearchedItemData}) {
@@ -19,9 +18,6 @@ function Search({ setSearchingItem, setSearchedItemData}) {
     setSearchingItem("")
   }
 
-  // function handleSearch(event) {
-  //     event.preventDefault();
-  //     console.log(event.target.elements[0].value)
   function handleInputSearch(event) {
     event.preventDefault();
     if (event.target.value) {
