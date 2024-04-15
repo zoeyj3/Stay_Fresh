@@ -1,0 +1,84 @@
+@use '../../styles/partials/index' as *;
+
+.form {
+    width: 100%;
+
+
+    &__add-container {
+        background-image: url('../../Assets/icons/plus-solid.svg');
+        background-size: 1rem;
+        background-repeat: no-repeat;
+        background-position: 1rem 1rem;
+        width: 100%;
+        height: 3.25rem;
+        padding: 0.5rem 1rem 0.5rem 2.875rem;
+        margin-top: 0.5rem;
+        border-radius: 3px;
+        border: 1px;
+        background-color: #fff;
+        box-shadow: 0px 2px 4px 1px #e6e6e6;
+    }
+
+    &__detail-container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        font-size: 14rem;
+        color: $color__darkgray;
+        border-radius: 3px;
+        border: 1px;
+        margin-bottom: 0.5rem;
+        box-shadow: 0px 2px 4px 1px #e6e6e6;
+    }
+
+    &__radios-container {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 0.75rem;
+    }
+
+    &__radio-container {
+        margin-right: 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__radio {
+        margin-right: 0.25rem;
+    }
+
+    &__number-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    &__number-label {
+        min-width: 8rem;
+    }
+
+    &__number-input {
+        width: 100%;
+        padding-left: 0.5rem;
+    }
+}
+
+input[type="number"] {
+    font-size: 14px;
+}
+
+.btn {
+    border: 1px solid $color__middlegray;
+    background-color: #fff;
+    color: $color__blue;
+    border-radius: 3px;
+    margin-top: 0.5rem;
+
+    &-invalid {
+
+        border: none;
+        background-color: #fff;
+        color: $color__darkgray;
+    }
+}

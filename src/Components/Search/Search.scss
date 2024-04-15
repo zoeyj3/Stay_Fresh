@@ -1,0 +1,53 @@
+@use '../../styles/partials/index' as *;
+
+.search{
+    margin-left: auto;
+    max-width: 50%;
+   
+
+    &__form{
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+        border-radius: 0.5rem;
+        border: 2px solid $color__blue;
+        background-color: #fff;
+    }
+
+    &__searchbutton{
+        background-color: $color__blue;
+        
+    }
+    &__searchicon{
+        color: #fff;
+        height: 1rem;
+        padding: 0.125rem;
+        @include tablet{
+            height: 1.25rem;
+        }
+    }
+    &__wrapper{
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+
+    }
+
+    &__inputbox{
+        width: 90%;
+        border:none;
+        max-width: 12rem;
+        padding-left: 0.5rem;
+
+    }
+    &__closebutton{
+        background-color: #fff;
+        padding-right: 0.5rem;
+        border-radius: 0.5rem;
+    }
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}

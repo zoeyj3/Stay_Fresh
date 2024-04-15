@@ -1,0 +1,25 @@
+@use '../../styles/partials/index' as *;
+
+
+// .menu{
+//     position: absolute;
+//     margin-top: 3rem;
+//     padding:2rem 1rem 2rem 1rem;
+//     height: 100%;
+//     width: 12rem;
+//     left:0;
+//     background-color: #FFF;
+//     visibility:hidden;
+//     @include tablet{
+//        visibility: visible;
+//     }
+// }
+.menubutton{
+
+    &__hambergericon{
+        color: $color__blue;
+        padding:0 1rem 0 1rem
+
+    }
+
+}
