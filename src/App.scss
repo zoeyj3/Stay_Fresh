@@ -1,3 +1,4 @@
+@use '../src/styles/partials/index' as *;
 .App{
   display: flex;
   flex-direction: column;
@@ -45,4 +46,26 @@ a:active {
   /* to {
     transform: rotate(360deg);
   } */
+ul, li{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+button{
+  border: none;
+}
+a:link {
+  color:inherit;
+}
+Link{
+  color:inherit;  
+}
+a:visited{
+  color:inherit;
+}
+Link:visited{
+  color:inherit;
+}
 

@@ -1,5 +1,6 @@
 import Form from "../Form/Form"
-import { Link } from "react-router-dom"
+import './AddInventory.scss'
+
 function AddInventory({setNewInventory}){
     return(
     <>

@@ -1,69 +1,111 @@
-import './Inventorylist.scss'
+import "./Inventorylist.scss";
 import InventoryListItem from "../InventoryListItem/InventoryListItem";
-import AddInventory from "../../Components/AddInventory/AddInventory"
+
 import axios from "axios";
-import { useNavigate, Link, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function Inventorylist({newInventory}) {
-  const { place } = useParams();
- 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSort } from "@fortawesome/free-solid-svg-icons";
+
+function Inventorylist({
+  newInventory,
+  updatedInventory,
+  itemChoosed,
+  setItemChoosed,
+  setUpdatedInventory,
+  place,
+}) {
+  const navigate = useNavigate();
   const [fullList, setFullList] = useState([]);
-  const [itemChoosed,setItemChoosed] = useState({});
-  
+  const [isSortByExpireDate, setIsSortByExpireDate] = useState(true);
+  console.log(place);
+
   useEffect(() => {
     const fetchInventoryList = async () => {
       const response = await axios.get("http://localhost:8080/inventory");
       //sort the data by best_before
-      const sortedData = response.data.sort((a, b) => new Date(a.best_before) - new Date(b.best_before))
+      let sortedData;
+      // sorting between bestbefore and update_time
+      if (isSortByExpireDate) {
+        sortedData = response.data.sort(
+          (a, b) => new Date(a.best_before) - new Date(b.best_before)
+        );
+      } else {
+        sortedData = response.data.sort(
+          (a, b) => new Date(b.updated_time) - new Date(a.updated_time)
+        );
+      }
       setFullList(sortedData);
     };
     fetchInventoryList();
-  }, [newInventory]);
+  }, [newInventory, updatedInventory, isSortByExpireDate]);
 
+  const filterList = fullList.filter((food) => food.storing_place === place);
+  console.log(filterList);
 
-  const filterList = fullList.filter(
-    (food) => food.storing_place === place
-  );
-  console.log(filterList)
+  const changeSort = (e) => {
+    e.preventDefault();
+    setIsSortByExpireDate(!isSortByExpireDate);
+  };
 
-
+  // set itemchoose list contains all the check/ uncheck key value pair
   const CheckboxChange = (itemName, itemStatus) => {
     setItemChoosed((prev) => ({
       ...prev,
-      [itemName]: itemStatus
+      [itemName]: itemStatus,
     }));
   };
 
-
-  function handleSubmit(event){
-    event.preventDefault();
-    const selectedNames = Object.keys(itemChoosed).filter(key => itemChoosed[key]);
-    console.log(selectedNames);
+  function handleSubmit(event) {
+    if (itemChoosed && Object.keys(itemChoosed).length > 0) {
+      const selectedNames = Object.keys(itemChoosed)
+        .filter((key) => itemChoosed[key] === true)
+        .join(",");
+      navigate(`/recipe/${selectedNames}`);
+      console.log(selectedNames);
+    } else{
+      alert("Please select ingredients \u{1F604}\u{1F604}\u{1F604}")
+    }
   }
-
 
   return (
     <>
-    {filterList && (
-        <div className='inventorylist'>
-      <form className='inventorylist__checkbox-form' onSubmit={handleSubmit}>
-        <button type="Submit">Search Recipe</button>
-      <ul>
-        {filterList.map((inventory) => {
-          return (
-            <InventoryListItem
-            key={inventory.id}
-            inventory={inventory}
-            CheckboxChange={CheckboxChange}
-            />
-          );
-        })
-        }
-      </ul>
-      
-      </form>
-      </div>
+      {filterList && (
+        <div className="inventorylist">
+          <div className="inventorylist__button-wrapper">
+            <button  className="inventorylist__button" onClick={handleSubmit}>Search Recipe</button>
+            <button className="inventorylist__buttonicon" onClick={changeSort}>
+              <FontAwesomeIcon icon={faSort} />
+            </button>
+          </div>
+          <ul>
+            {filterList.map((inventory) => {
+              return (
+                <InventoryListItem
+                  key={inventory.id}
+                  inventory={inventory}
+                  CheckboxChange={CheckboxChange}
+                  setUpdatedInventory={setUpdatedInventory}
+                />
+              );
+            })}
+          </ul>
+          {!place && (
+            <ul>
+              {fullList.map((inventory) => {
+                return (
+                  <InventoryListItem
+                    key={inventory.id}
+                    inventory={inventory}
+                    CheckboxChange={CheckboxChange}
+                    setUpdatedInventory={setUpdatedInventory}
+                  />
+                );
+              })}
+            </ul>
+          )}
+        </div>
       )}
     </>
   );

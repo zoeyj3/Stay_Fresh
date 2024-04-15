@@ -1,6 +1,40 @@
 @use '../../styles/partials/index' as *;
 
 .inventorylist{
+    padding-top: 1.5rem;
     width: 100%;
-    padding: 0.5rem;
+    background-color: $color__gray;
+    padding-bottom: 4rem;
+    // padding: 0.5rem;
+    @include tablet{
+        padding-top: 2.5rem;
+    }
+    &__button-wrapper{
+
+        margin-left: auto;
+        display: flex;
+        flex-direction:row;
+        justify-content: end;
+        align-items: end;
+    }
+    &__button{
+        width: auto;
+        padding: 0.5rem;
+        background-color: white;
+        color:$color__blue;
+        border-radius: 3px;
+        border: 1px solid $color__blue;
+        &:hover {
+            cursor: pointer;
+        }
+        
+    }
+    &__buttonicon{
+        background-color: $color__gray;
+        color:$color__blue;
+        padding: 0.5rem;
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }

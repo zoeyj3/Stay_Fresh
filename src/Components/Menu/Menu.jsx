@@ -1,12 +1,14 @@
-import MenuList from '../MenuList/MenuList'
+
 import './Menu.scss'
-import { Link } from 'react-router-dom'
+import MenuList from '../MenuList/MenuList';
+
 
 function Menu(){
     return(
-    <div className='menu'>
-    <MenuList/>
-    </div>
+        <div className='menu'>
+            <MenuList/>
+        </div>
+
     )
 }
 export default Menu
