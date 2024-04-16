@@ -21,7 +21,7 @@ function Form({ objectId, keyword, setNewInventory }) {
 
   // click storing place to change the default time
   function handlePreserveTime(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setStoringCondition(event.target.value);
   }
   function getDefaultPreserveTime(storingCondition) {
@@ -48,7 +48,7 @@ function Form({ objectId, keyword, setNewInventory }) {
         event.target.preserve_time.value
       ),
     };
-    console.log(newItem);
+    // console.log(newItem);
     try {
       const response = await axios.post("http://localhost:8080/add", newItem);
 

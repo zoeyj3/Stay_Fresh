@@ -2,7 +2,7 @@ import InventoryListItem from "../InventoryListItem/InventoryListItem"
 import "./SearchResult.scss"
 
 function SearchResult({searchedItemData, setUpdatedInventory, setItemChoosed}){
-    console.log(searchedItemData)
+    // console.log(searchedItemData)
 
     const CheckboxChange = (itemName, itemStatus) => {
       setItemChoosed((prev) => ({

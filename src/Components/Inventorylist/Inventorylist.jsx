@@ -19,7 +19,7 @@ function Inventorylist({
   const navigate = useNavigate();
   const [fullList, setFullList] = useState([]);
   const [isSortByExpireDate, setIsSortByExpireDate] = useState(true);
-  console.log(place);
+  // console.log(place);
 
   useEffect(() => {
     const fetchInventoryList = async () => {
@@ -42,7 +42,7 @@ function Inventorylist({
   }, [newInventory, updatedInventory, isSortByExpireDate]);
 
   const filterList = fullList.filter((food) => food.storing_place === place);
-  console.log(filterList);
+  // console.log(filterList);
 
   const changeSort = (e) => {
     e.preventDefault();

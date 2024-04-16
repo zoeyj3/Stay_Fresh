@@ -16,7 +16,7 @@ function RecipePage() {
     const response = await axios.get(
       `${mealApiURL}filter.php?i=${ingredientName}`
     );
-    console.log(response.data.meals);
+    // console.log(response.data.meals);
     setRecipeList(response.data.meals);
   }
 

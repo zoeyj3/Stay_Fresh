@@ -22,7 +22,7 @@ function Search({ setSearchingItem, setSearchedItemData}) {
     event.preventDefault();
     if (event.target.value) {
       setSearchingItem(event.target.value);
-      console.log(event.target.value);
+      // console.log(event.target.value);
     }
   }
   // }

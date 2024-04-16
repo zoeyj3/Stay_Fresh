@@ -36,7 +36,7 @@ function EditInventory({
         event.target.preserve_time.value
       ),
     };
-    console.log(updatedItem);
+    // console.log(updatedItem);
     setUpdatedInventory(updatedItem);
 
     const postUpdatedItem = async () =>{
