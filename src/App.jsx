@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import Animation from "./Pages/Animation/Animation";
 import HomePage from "./Pages/HomePage/HomePage";
 import RecipePage from "./Pages/RecipePage/RecipePage";
 import RecipeDetailPage from "./Pages/RecipeDetailPage/RecipeDetailPage";
@@ -12,7 +12,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Animation />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/myfridge/:place" element={<HomePage />} />
           <Route path="/myfridge" element={<HomePage />} />
           <Route path="/recipe/:names" element={<RecipePage />} />
