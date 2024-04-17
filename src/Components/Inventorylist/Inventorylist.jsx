@@ -76,7 +76,9 @@ function Inventorylist({
           <div className="inventorylist__button-wrapper">
             <button  className="inventorylist__button" onClick={handleSubmit}>Search Recipe</button>
             <button className="inventorylist__buttonicon" onClick={changeSort}>
-              <FontAwesomeIcon icon={faSort} />
+              <FontAwesomeIcon  className="inventorylist__icon" icon={faSort} />
+              {!isSortByExpireDate && (<p>updating time</p>)}
+              {isSortByExpireDate && (<p>expiring date</p>)}
             </button>
           </div>
           <ul>
