@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
+
 function EditInventory({
   inventoryId,
   inventoryName,
@@ -37,22 +38,24 @@ function EditInventory({
       ),
     };
     console.log(updatedItem);
-    setUpdatedInventory(updatedItem);
+    
 
     const postUpdatedItem = async () =>{
       try {
         await axios.put(
-          `http://localhost:8080/inventory/${inventoryId}`,
+          `${CustomUtils.API_ADDRESS}/inventory/${inventoryId}`,
           updatedItem
         );
         
         handleClose()
+        setUpdatedInventory(updatedItem);
         console.log("updated");
       } catch (error){
         console.error("Failed to edit", error);
       }
     }
     postUpdatedItem()
+    
   }
 
   return (

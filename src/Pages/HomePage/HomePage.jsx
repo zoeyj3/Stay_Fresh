@@ -10,6 +10,7 @@ import {  useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Inventory from "../../Components/Inventory/Inventory";
+import * as CustomUtils from "../../CustomUtils.js";
 
 function HomePage() {
   const { place } = useParams();
@@ -24,7 +25,7 @@ function HomePage() {
     console.log(searchingItem);
     try {
       const response = await axios.get(
-        `http://localhost:8080/inventory-name/${searchingItem}`
+        `${CustomUtils.API_ADDRESS}/inventory-name/${searchingItem}`
       );
 
       console.log(response.data);

@@ -7,6 +7,7 @@ import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import { faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as CustomUtils from "../../CustomUtils.js";
 
 function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
   let expired = false;
@@ -26,7 +27,7 @@ function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
 
   const handleDelete = async (inventoryId) => {
     try {
-      await axios.delete(`http://localhost:8080/inventory/${inventoryId}`);
+      await axios.delete(`${CustomUtils.API_ADDRESS}/inventory/${inventoryId}`);
       console.log(`${inventory.name} has been deleted`);
       setUpdatedInventory(inventoryId);
     } catch (error) {

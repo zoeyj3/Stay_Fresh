@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
+import * as CustomUtils from "../../CustomUtils.js";
 
 function Inventorylist({
   newInventory,
@@ -23,7 +24,7 @@ function Inventorylist({
 
   useEffect(() => {
     const fetchInventoryList = async () => {
-      const response = await axios.get("http://localhost:8080/inventory");
+      const response = await axios.get(CustomUtils.API_ADDRESS + "/inventory");
       //sort the data by best_before
       let sortedData;
       // sorting between bestbefore and update_time

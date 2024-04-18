@@ -1,3 +1,5 @@
+export const API_ADDRESS = "https://stayfresh-9969dc341ce3.herokuapp.com"
+
 export function getCurrentDate() {
   const now = new Date();
   const year = now.getFullYear();
