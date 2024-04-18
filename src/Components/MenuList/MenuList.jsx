@@ -7,7 +7,7 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import fridgeicon from "../../Assets/icons/refrigerator.svg";
 
-FRONTEND_ADDRESS=""
+
 // FRONTEND_ADDRESS="http://localhost:3000"
 
 function MenuList() {
