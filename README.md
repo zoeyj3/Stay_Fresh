@@ -7,8 +7,11 @@ Stay Fresh is a refrigerator management web application that helps users meticul
 
 ## Key Features
 Inventory Management: Easily log every item in your refrigerator and categorize them by type.
+
 Freshness Timelines: Assign specific freshness durations for each category to ensure optimal consumption timing.
+
 Expiration Alerts: The app proactively lists all inventory items and alerts users as the expiration dates approach, helping to minimize food waste.
+
 Recipe Suggestions: Receive tailored recipe recommendations based on the current contents of your refrigerator, making meal planning both simple and creative.
 
 ## Benefits:
