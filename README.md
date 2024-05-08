@@ -1,4 +1,23 @@
-# Getting Started with Create React App
+
+# Stay Fresh
+
+## Overview
+
+Stay Fresh is a refrigerator management web application that helps users meticulously track every item in their refrigerator, set freshness timelines for different categories, and access this information anytime, anywhere. The application lists all inventory items, alerts users to consume food before it expires, and provides corresponding recipes.
+
+## Key Features
+Inventory Management: Easily log every item in your refrigerator and categorize them by type.
+Freshness Timelines: Assign specific freshness durations for each category to ensure optimal consumption timing.
+Expiration Alerts: The app proactively lists all inventory items and alerts users as the expiration dates approach, helping to minimize food waste.
+Recipe Suggestions: Receive tailored recipe recommendations based on the current contents of your refrigerator, making meal planning both simple and creative.
+
+## Benefits:
+Stay Fresh transforms the way users interact with their food inventory. By promoting timely consumption and reducing waste, the application not only saves money but also supports a more sustainable lifestyle. It helps users check their food stock status anytime and anywhere, preventing over-purchasing and overstocking. Furthermore, Stay Fresh aids in meal planning by suggesting recipes based on available ingredients, fostering healthier eating habits and making meal preparation a breeze. This application is ideal for anyone looking to optimize kitchen efficiency and reduce environmental impact.
+
+## APIs
+Stay Fresh utilizes external data from:
+TheMealDB API for fetching recipe data. More information can be found here(https://www.themealdb.com/).
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
