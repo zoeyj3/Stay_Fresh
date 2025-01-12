@@ -1,4 +1,4 @@
-export const API_ADDRESS = "https://stayfresh-2d6eb1146b8f.herokuapp.com/";
+export const API_ADDRESS = "https://stayfresh-2d6eb1146b8f.herokuapp.com";
 
 export function getCurrentDate() {
   const now = new Date();
