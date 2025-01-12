@@ -7,27 +7,30 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import fridgeicon from "../../Assets/icons/refrigerator.svg";
 
+
+// FRONTEND_ADDRESS="http://localhost:3000"
+
 function MenuList() {
   return (
     <div className="menulist">
-      <a href="http://localhost:3000" className="menulist__item">
+      <a href="https://stayfresh1.netlify.app/" className="menulist__item">
         <FontAwesomeIcon className="menulist__icon" icon={faHouse} /> Home
       </a>
       <a
-        href="http://localhost:3000/myfridge/fridge"
+        href="https://stayfresh1.netlify.app/myfridge/fridge"
         className="menulist__item"
       >
         <img className="menulist__icon-img" src={fridgeicon} /> Fridge
       </a>
       <a
-        href="http://localhost:3000/myfridge/freezer"
+        href="https://stayfresh1.netlify.app/myfridge/freezer"
         className="menulist__item"
       >
         <FontAwesomeIcon className="menulist__icon" icon={faSnowflake} />
         Freezer
       </a>
       <a
-        href="http://localhost:3000/myfridge/pantry"
+        href="https://stayfresh1.netlify.app/myfridge/pantry"
         className="menulist__item"
       >
         <FontAwesomeIcon className="menulist__icon" icon={faBoxesPacking} />
