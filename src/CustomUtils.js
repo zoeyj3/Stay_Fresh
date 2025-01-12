@@ -1,4 +1,4 @@
-export const API_ADDRESS = "https://stayfresh-9e8c7ab11753.herokuapp.com"
+export const API_ADDRESS = "https://stayfresh-2d6eb1146b8f.herokuapp.com/";
 
 export function getCurrentDate() {
   const now = new Date();
@@ -23,7 +23,7 @@ export function getBestBeforeDate(preservingTime) {
 export function getPreserveDayByBestBefore(bestBeforeDate) {
   const bestBefore = new Date(bestBeforeDate);
   const today = new Date(getCurrentDate());
-  const diffInTime = bestBefore.getTime() - today.getTime()
-  const diffInDays = Math.ceil(diffInTime / (1000 * 3600 * 24))
+  const diffInTime = bestBefore.getTime() - today.getTime();
+  const diffInDays = Math.ceil(diffInTime / (1000 * 3600 * 24));
   return diffInDays;
 }
