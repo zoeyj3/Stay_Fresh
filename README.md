@@ -1,6 +1,8 @@
 
 # Stay Fresh
 
+[Stay Fresh 1.0 Demo](https://stayfresh1.netlify.app/).
+
 ## Overview
 
 Stay Fresh is a refrigerator management web application that helps users meticulously track every item in their refrigerator, set freshness timelines for different categories, and access this information anytime, anywhere. The application lists all inventory items, alerts users to consume food before it expires, and provides corresponding recipes.
