@@ -12,6 +12,7 @@ import * as CustomUtils from "../../CustomUtils.js";
 function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
   let expired = false;
   let expirewarning = false;
+  let remainTime;
 
   // filtering the item expired and going to expire
   if (inventory.days_to_expire < 0) {
