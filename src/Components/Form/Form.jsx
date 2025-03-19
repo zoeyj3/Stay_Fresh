@@ -39,10 +39,9 @@ function Form({ objectId, keyword, setNewInventory }) {
     event.preventDefault();
 
     const newItem = {
-      name: event.target.name.value,
+      inventory_name: event.target.name.value,
       storing_place: event.target.storing_place.value,
       servings: event.target.servings.value,
-      updated_time: CustomUtils.getCurrentDate(),
       preserve_time: event.target.preserve_time.value,
       best_before: CustomUtils.getBestBeforeDate(
         event.target.preserve_time.value

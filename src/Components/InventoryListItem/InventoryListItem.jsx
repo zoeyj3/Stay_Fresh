@@ -13,6 +13,7 @@ function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
   let expired = false;
   let expireWarning = false;
   let remainTime;
+  // console.log(inventory);
 
   // filtering the item expired and going to expire
   if (inventory.days_to_expire < 0) {
@@ -26,13 +27,13 @@ function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
   }
 
   const handleCheckbox = (event) => {
-    CheckboxChange(inventory.name, event.target.checked);
+    CheckboxChange(inventory.inventory_name, event.target.checked);
   };
 
   const handleDelete = async (inventoryId) => {
     try {
       await axios.delete(`${CustomUtils.API_ADDRESS}/inventory/${inventoryId}`);
-      console.log(`${inventory.name} has been deleted`);
+      console.log(`${inventory.inventory_name} has been deleted`);
       setUpdatedInventory(inventoryId);
     } catch (error) {
       console.error("Error deleting inventory item:", error);
@@ -47,13 +48,13 @@ function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
           <input
             type="checkbox"
             className="listitem__checkbox"
-            id={inventory.name}
-            value={inventory.name}
+            id={inventory.inventory_name}
+            value={inventory.inventory_name}
             name={inventory.id}
             onChange={handleCheckbox}
           />
           <div className="listitem__contentwrapper">
-            <p className="listitem__name">{inventory.name} </p>
+            <p className="listitem__name">{inventory.inventory_name} </p>
             <div className="listitem__details">
               <div className="listitem__details-wrapper">
                 <FontAwesomeIcon className="listitem__icon" icon={faUtensils} />
@@ -89,7 +90,7 @@ function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
                       icon={faCalendarXmark}
                     />
                     <p className="listitem__detailstext">
-                      {inventory.best_before}
+                      {inventory.best_before.slice(0, 10)}
                     </p>
                   </>
                 )}
@@ -105,7 +106,7 @@ function InventoryListItem({ inventory, CheckboxChange, setUpdatedInventory }) {
           <div className="listitem__button-wrapper">
             <EditInventory
               inventoryId={inventory.id}
-              inventoryName={inventory.name}
+              inventoryName={inventory.inventory_name}
               inventoryServings={inventory.servings}
               inventoryBestBeforeDate={inventory.best_before}
               inventoryStoringPlace={inventory.storing_place}

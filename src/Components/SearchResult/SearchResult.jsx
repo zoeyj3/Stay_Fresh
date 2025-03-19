@@ -1,33 +1,35 @@
-import InventoryListItem from "../InventoryListItem/InventoryListItem"
-import "./SearchResult.scss"
+import InventoryListItem from "../InventoryListItem/InventoryListItem";
+import "./SearchResult.scss";
 
-function SearchResult({searchedItemData, setUpdatedInventory, setItemChoosed}){
-    console.log(searchedItemData)
+function SearchResult({
+  searchedItemData,
+  setUpdatedInventory,
+  setItemChosen,
+}) {
+  console.log(searchedItemData);
 
-    const CheckboxChange = (itemName, itemStatus) => {
-      setItemChoosed((prev) => ({
-        ...prev,
-        [itemName]: itemStatus
-      }));
-    };
+  const CheckboxChange = (itemName, itemStatus) => {
+    setItemChosen((prev) => ({
+      ...prev,
+      [itemName]: itemStatus,
+    }));
+  };
 
-    return(
+  return (
     <>
-    <ul className="searchresult">
-    {searchedItemData.map((inventory) => {
+      <ul className="searchresult">
+        {searchedItemData.map((inventory) => {
           return (
             <InventoryListItem
-            key={inventory.id + "_insearch"}
-            inventory={inventory}
-            CheckboxChange={CheckboxChange}
-            setUpdatedInventory={setUpdatedInventory}
+              key={inventory.id + "_insearch"}
+              inventory={inventory}
+              CheckboxChange={CheckboxChange}
+              setUpdatedInventory={setUpdatedInventory}
             />
           );
-        })
-        }
-    </ul>
-
+        })}
+      </ul>
     </>
-    )
+  );
 }
-export default SearchResult
+export default SearchResult;

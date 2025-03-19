@@ -10,14 +10,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-
 function EditInventory({
   inventoryId,
   inventoryName,
   inventoryServings,
   inventoryBestBeforeDate,
   inventoryStoringPlace,
-  setUpdatedInventory
+  setUpdatedInventory,
 }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -27,35 +26,32 @@ function EditInventory({
   function handleSubmit(event) {
     event.preventDefault();
     const updatedItem = {
-      id:inventoryId,
-      name: event.target.name.value,
+      id: inventoryId,
+      inventory_name: event.target.name.value,
       storing_place: event.target.storing_place.value,
       servings: event.target.servings.value,
-      updated_time: CustomUtils.getCurrentDate(),
       preserve_time: event.target.preserve_time.value,
       best_before: CustomUtils.getBestBeforeDate(
         event.target.preserve_time.value
       ),
     };
     console.log(updatedItem);
-    
 
-    const postUpdatedItem = async () =>{
+    const postUpdatedItem = async () => {
       try {
         await axios.put(
           `${CustomUtils.API_ADDRESS}/inventory/${inventoryId}`,
           updatedItem
         );
-        
-        handleClose()
+
+        handleClose();
         setUpdatedInventory(updatedItem);
         console.log("updated");
-      } catch (error){
+      } catch (error) {
         console.error("Failed to edit", error);
       }
-    }
-    postUpdatedItem()
-    
+    };
+    postUpdatedItem();
   }
 
   return (
@@ -93,7 +89,6 @@ function EditInventory({
                       name="storing_place"
                       type="radio"
                       defaultChecked={inventoryStoringPlace === "fridge"}
-
                     />
                     <label htmlFor="fridge">fridge</label>
                   </div>
@@ -105,7 +100,6 @@ function EditInventory({
                       name="storing_place"
                       type="radio"
                       defaultChecked={inventoryStoringPlace === "freezer"}
-
                     />
                     <label htmlFor="freezer">freezer</label>
                   </div>
@@ -117,7 +111,6 @@ function EditInventory({
                       name="storing_place"
                       type="radio"
                       defaultChecked={inventoryStoringPlace === "pantry"}
-
                     />
                     <label htmlFor="pantry">pantry</label>
                   </div>
@@ -134,7 +127,6 @@ function EditInventory({
                     className="form__number-input"
                     defaultValue={inventoryServings}
                     required
-
                   />
                 </div>
                 <div className="form__number-container">
@@ -154,11 +146,7 @@ function EditInventory({
                   />
                 </div>
 
-                <button
-                  type="submit"
-                >
-                  edit item
-                </button>
+                <button type="submit">edit item</button>
               </div>
             </form>
           </div>

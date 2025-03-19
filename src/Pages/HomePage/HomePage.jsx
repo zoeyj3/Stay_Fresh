@@ -16,14 +16,14 @@ function HomePage() {
   const [searchingItem, setSearchingItem] = useState(null);
   const [searchedItemData, setSearchedItemData] = useState("");
   const [updatedInventory, setUpdatedInventory] = useState({});
-  const [itemChoosed, setItemChoosed] = useState({});
+  const [itemChosen, setItemChosen] = useState({});
 
   // console.log( place )
   const handleSearch = async () => {
     // console.log(searchingItem);
     try {
       const response = await axios.get(
-        `${CustomUtils.API_ADDRESS}/inventory-name/${searchingItem}`
+        `${CustomUtils.API_ADDRESS}/inventory/name/${searchingItem}`
       );
 
       // console.log(response.data);
@@ -43,34 +43,34 @@ function HomePage() {
   }, [searchingItem, updatedInventory]);
 
   return (
-    <div className = "homepage">
-      <div className = "homepage__titlebox">
-        <MenuButton className = "homepage__menuicon" />
+    <div className="homepage">
+      <div className="homepage__titlebox">
+        <MenuButton className="homepage__menuicon" />
         {place ? (
-          <h1 className = "homepage__title">{place}</h1>
+          <h1 className="homepage__title">{place}</h1>
         ) : (
-          <h1 className = "homepage__title">HOME</h1>
+          <h1 className="homepage__title">HOME</h1>
         )}
         <Search
-          className = "search"
-          setSearchingItem = {setSearchingItem}
-          setSearchedItemData = {setSearchedItemData}
+          className="search"
+          setSearchingItem={setSearchingItem}
+          setSearchedItemData={setSearchedItemData}
         />
       </div>
 
       {searchingItem && searchedItemData && (
         <SearchResult
-          searchedItemData = {searchedItemData}
-          setUpdatedInventory = {setUpdatedInventory}
-          setItemChoosed = {setItemChoosed}
+          searchedItemData={searchedItemData}
+          setUpdatedInventory={setUpdatedInventory}
+          setItemChosen={setItemChosen}
         />
       )}
       {!searchingItem && (
         <Inventory
           updatedInventory={updatedInventory}
           setUpdatedInventory={setUpdatedInventory}
-          setItemChoosed={setItemChoosed}
-          itemChoosed={itemChoosed}
+          setItemChosen={setItemChosen}
+          itemChosen={itemChosen}
           place={place}
         />
       )}

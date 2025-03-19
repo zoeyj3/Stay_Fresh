@@ -1,4 +1,4 @@
-export const API_ADDRESS = "https://stayfresh-2d6eb1146b8f.herokuapp.com";
+export const API_ADDRESS = "http://192.168.1.113:8080";
 
 export function getCurrentDate() {
   const now = new Date();
@@ -20,7 +20,10 @@ export function getBestBeforeDate(preservingTime) {
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, "0");
   const day = String(now.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const seconds = String(now.getSeconds()).padStart(2, "0");
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
 
 export function getPreserveDayByBestBefore(bestBeforeDate) {
