@@ -49,7 +49,7 @@ function Form({ objectId, keyword, setNewInventory }) {
     };
     console.log(newItem);
     try {
-      const response = await axios.post(CustomUtils.API_ADDRESS + "/add", newItem);
+      const response = await axios.post(CustomUtils.API_ADDRESS + "/inventory/add", newItem);
 
       console.log(response.data);
       setNewInventory(newItem);
